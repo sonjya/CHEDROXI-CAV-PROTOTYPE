@@ -80,7 +80,7 @@ $result2 = mysqli_query($connection,$sql2);
         </div>
 
         <div class="container-fluid">
-            <a href="../index.php" class="btn btn-danger">BACK</a>
+            <a href="../index.php" class="btn btn-outline-danger">BACK</a>
         </div>
 
 

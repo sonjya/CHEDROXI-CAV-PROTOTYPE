@@ -30,7 +30,7 @@ session_start();
                                         </div>
                                 <?php } ?>
 
-                                <input type="submit" class="btn btn-success" value="LOGIN">
+                                <input type="submit" class="btn btn-outline-success" value="LOGIN">
                             </form>
                         </div>
                     </div>

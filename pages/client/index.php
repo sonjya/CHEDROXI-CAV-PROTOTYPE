@@ -106,7 +106,7 @@ $fetch2 = mysqli_fetch_assoc($res2);
                     <div class="card-body">
                         <h5 class="card-title">Special Order</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="pages/specialorder.php" class="btn btn-primary">Encode</a>
+                        <a href="pages/specialorder.php" class="btn btn-outline-primary">Encode</a>
                     </div>
                 </div>
 
@@ -114,7 +114,7 @@ $fetch2 = mysqli_fetch_assoc($res2);
                     <div class="card-body">
                         <h5 class="card-title">Units Earner</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Encode</a>
+                        <a href="#" class="btn btn-outline-primary">Encode</a>
                     </div>
                 </div>
 
@@ -122,7 +122,7 @@ $fetch2 = mysqli_fetch_assoc($res2);
                     <div class="card-body">
                         <h5 class="card-title">CAR</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Encode</a>
+                        <a href="#" class="btn btn-outline-primary">Encode</a>
                     </div>
                 </div>
 
@@ -130,7 +130,7 @@ $fetch2 = mysqli_fetch_assoc($res2);
                     <div class="card-body">
                         <h5 class="card-title">Accreditation</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Encode</a>
+                        <a href="#" class="btn btn-outline-primary">Encode</a>
                     </div>
                 </div>
 
@@ -138,7 +138,7 @@ $fetch2 = mysqli_fetch_assoc($res2);
                     <div class="card-body">
                         <h5 class="card-title">CTE/RSTC/ECE</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Encode</a>
+                        <a href="#" class="btn btn-outline-primary">Encode</a>
                     </div>
                 </div>
 
@@ -148,7 +148,7 @@ $fetch2 = mysqli_fetch_assoc($res2);
                     <div class="card-body">
                         <h5 class="card-title">View Submitted Files</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">View</a>
+                        <a href="#" class="btn btn-outline-primary">View</a>
                     </div>
                 </div>
 
@@ -156,7 +156,7 @@ $fetch2 = mysqli_fetch_assoc($res2);
                     <div class="card-body">
                         <h5 class="card-title">Courses</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">View</a>
+                        <a href="#" class="btn btn-outline-primary">View</a>
                     </div>
                 </div>
 

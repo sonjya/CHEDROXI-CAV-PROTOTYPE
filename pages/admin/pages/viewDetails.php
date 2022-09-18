@@ -190,9 +190,9 @@ $result4 = mysqli_query($connection,$sql4);
                 </div>
 
                 <div class="container-fluid">
-                    <input type="submit" class="btn btn-success" value="ACCEPT">
-                    <a href="../../../modules/rejectFile.php?id=<?=$ID?>" class="btn btn-warning">REJECT</a>
-                    <a href="../index.php" class="btn btn-danger">BACK</a>
+                    <input type="submit" class="btn btn-outline-success" value="ACCEPT">
+                    <a href="../../../modules/rejectFile.php?id=<?=$ID?>" class="btn btn-outline-warning">REJECT</a>
+                    <a href="../index.php" class="btn btn-outline-danger">BACK</a>
                 </div>
             </form>
 

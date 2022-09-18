@@ -89,7 +89,7 @@ $fetch3=mysqli_fetch_assoc($result3);
                         </div>
                         
                         <div class="mb-3">
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#verifyModal">PROCESS</button>
+                            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#verifyModal">PROCESS</button>
                         </div>
 
 
@@ -105,8 +105,8 @@ $fetch3=mysqli_fetch_assoc($result3);
                                         Are you sure?
                                     </div>
                                     <div class="modal-footer">
-                                        <input type="submit"class="btn btn-success" value="PROCESS">
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CLOSE</button>
+                                        <input type="submit"class="btn btn-outline-success" value="PROCESS">
+                                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">CLOSE</button>
                                     </div>
                                 </div>
                             </div>

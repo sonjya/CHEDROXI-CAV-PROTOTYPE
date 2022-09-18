@@ -75,7 +75,7 @@ $result2 = mysqli_query($connection,$sql2);
                             <td><?=$fetch2['preparedby']?></td>
                             <td><?=$fetch2['applicationtype']?></td>
                             <td><?=$fetch2['status']?></td>
-                            <td><a href="viewAcceptedDetails.php?id=<?=$fetch2['id']?>" class="btn btn-primary">View</a></td>
+                            <td><a href="viewAcceptedDetails.php?id=<?=$fetch2['id']?>" class="btn btn-outline-primary">View</a></td>
                         </tr>
                     <?php } ?>
                 </tbody>
@@ -84,7 +84,7 @@ $result2 = mysqli_query($connection,$sql2);
         </div>
 
         <div class="container-fluid">
-            <a href="../index.php" class="btn btn-danger">BACK</a>
+            <a href="../index.php" class="btn btn-outline-danger">BACK</a>
         </div>
 
 

@@ -155,8 +155,8 @@ $result2 = mysqli_query($connection,$sql2);
                 <br>
                 <hr>
                 <p style="color:red;">Please review further to avoid errors and issues.</p>
-                <input type="submit" name="submit" value="SUBMIT" class="btn btn-success">   
-                <a href="../index.php" class="btn btn-danger">Cancel</a>
+                <input type="submit" name="submit" value="SUBMIT" class="btn btn-outline-success">   
+                <a href="../index.php" class="btn btn-outline-danger">Cancel</a>
 
             </form>
 

@@ -25,6 +25,10 @@ $result3 = mysqli_query($connection,$sql3);
 $sql4 = "select count(a.schoolid)as entries,a.schoolid,schooldesc from tbl_process a inner join tbl_schools b where a.schoolid=b.schoolid and status='rejected' and a.active='yes' group by a.schoolid";
 $result4 = mysqli_query($connection,$sql4);
 
+//count all
+$sql5 = "select count(a.schoolid)as entries,a.schoolid,schooldesc from tbl_process a inner join tbl_schools b where a.schoolid=b.schoolid and a.active='no' group by a.schoolid";
+$result5 = mysqli_query($connection,$sql5);
+
 ?>
 
 <!doctype html>
@@ -68,7 +72,7 @@ $result4 = mysqli_query($connection,$sql4);
                             <hr>
                             <h6 class="card-text"><?= $fetch2['entries'] ?></h6>
                             <p class="card-text">entries from this HEI.</p>
-                            <a href="pages/viewEntries.php?id=<?= $fetch2['schoolid']?>" class="btn btn-primary">View</a>
+                            <a href="pages/viewEntries.php?id=<?= $fetch2['schoolid']?>" class="btn btn-outline-primary">View</a>
                         </div>
                     </div>
 
@@ -89,7 +93,7 @@ $result4 = mysqli_query($connection,$sql4);
                             <hr>
                             <h6 class="card-text"><?= $fetch3['entries'] ?></h6>
                             <p class="card-text">entries from this HEI.</p>
-                            <a href="pages/viewAccepted.php?id=<?= $fetch3['schoolid']?>" class="btn btn-primary">View</a>
+                            <a href="pages/viewAccepted.php?id=<?= $fetch3['schoolid']?>" class="btn btn-outline-primary">View</a>
                         </div>
                     </div>
 
@@ -110,7 +114,7 @@ $result4 = mysqli_query($connection,$sql4);
                             <hr>
                             <h6 class="card-text"><?= $fetch4['entries'] ?></h6>
                             <p class="card-text">entries from this HEI.</p>
-                            <a href="pages/viewRejected.php?id=<?= $fetch4['schoolid']?>" class="btn btn-primary">View</a>
+                            <a href="pages/viewRejected.php?id=<?= $fetch4['schoolid']?>" class="btn btn-outline-primary">View</a>
                         </div>
                     </div>
 
@@ -121,10 +125,23 @@ $result4 = mysqli_query($connection,$sql4);
             <h1>VALIDATED</h1>
             <hr>
 
+            <div class="row">
 
+                <?php while($fetch4=mysqli_fetch_assoc($result4)) { ?>
 
+                    <div class="card m-2" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $fetch4['schooldesc'] ?></h5>
+                            <hr>
+                            <h6 class="card-text"><?= $fetch4['entries'] ?></h6>
+                            <p class="card-text">entries from this HEI.</p>
+                            <a href="pages/viewRejected.php?id=<?= $fetch4['schoolid']?>" class="btn btn-outline-primary">View</a>
+                        </div>
+                    </div>
 
+                <?php } ?>
 
+            </div>
 
 
 
