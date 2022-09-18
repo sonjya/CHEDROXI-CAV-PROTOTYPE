@@ -156,7 +156,7 @@ $fetch2 = mysqli_fetch_assoc($res2);
                     <div class="card-body">
                         <h5 class="card-title">Courses</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-outline-primary">View</a>
+                        <a href="pages/viewCourses.php" class="btn btn-outline-primary">View</a>
                     </div>
                 </div>
 
