@@ -21,9 +21,13 @@ $fetch2=mysqli_fetch_assoc($result2);
 
 $viewedName = $fetch2['lastname'];
 
-// $sql3 = "select referencenumber from tbl_cashier";
+//getting data from payments
 $sql3 = "select paymentid,concat(fullname,' // ',referencenumber) as fullname from tbl_payments where active='yes' and fullname like '%$viewedName%'";
 $result3 = mysqli_query($connection,$sql3);
+
+//getting data from commissioners
+$sql4 = "select * from tbl_commissioners where active='yes'";
+$result4 = mysqli_query($connection,$sql4);
 
 ?>
 
@@ -165,12 +169,14 @@ $result3 = mysqli_query($connection,$sql3);
                     <label class="form-label">Reviewed By</label>
                     <input type="text" class="form-control" name="reviewedby" value="<?=$fetch2['reviewedby']?>" disabled>
                 </div>
-
+            
                 <div class="mb-3">
                     <label class="form-label">Commissioner</label>
                         <select class="form-select" aria-label="Default select example" name="commissioner" >  
-                        <option value="">Director VI</option>
-                    </select>
+                                <?php while($fetch4=mysqli_fetch_assoc($result4)) {  ?>
+                                    <option value="<?= $fetch4['commissionerID']?>"><?=$fetch4['fullName']?></option>
+                                <?php } ?>    
+                        </select>
                 </div>
 
                 <div class="mb-3">
@@ -185,12 +191,15 @@ $result3 = mysqli_query($connection,$sql3);
 
                 <div class="container-fluid">
                     <input type="submit" class="btn btn-success" value="ACCEPT">
-                    <a href="../index.php" class="btn btn-warning">REJECT</a>
+                    <a href="../../../modules/rejectFile.php?id=<?=$ID?>" class="btn btn-warning">REJECT</a>
                     <a href="../index.php" class="btn btn-danger">BACK</a>
                 </div>
-                </form>
+            </form>
 
        </div>
+
+
+
 
 
 

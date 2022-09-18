@@ -5,8 +5,9 @@ require_once 'dbconnection.php';
 $id = $_POST['id'];
 $preparedby = $_POST['preparedby'];
 $paymentid = $_POST['paymentid'];
+$commissionerID = $_POST['commissioner'];
 
-$sql = "update tbl_process set preparedby = '$preparedby',status='Accepted',paymentid='$paymentid' where id = $id";
+$sql = "update tbl_process set preparedby = '$preparedby',status='Accepted',paymentid='$paymentid',commissionerid=$commissionerID where id = $id";
 $sql2 = "update tbl_payments set active='no' where paymentid=$paymentid";
 
 try {

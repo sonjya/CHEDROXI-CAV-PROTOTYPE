@@ -14,12 +14,29 @@ $fetch=mysqli_fetch_assoc($result);
 $user = $fetch['lastname'] . ', ' . $fetch['firstname'];
 
 //for school name and school address
-$sql2 = "select schooldesc,schoolcity from tbl_schools a inner join tbl_user_school b where a.schoolid=b.schoolid and b.userid='$UID' and b.active='yes' limit 1";
+$sql2 = "select a.schoolid,schooldesc,schoolcity from tbl_schools a inner join tbl_user_school b where a.schoolid=b.schoolid and b.userid='$UID' and b.active='yes' limit 1";
 $result2 = mysqli_query($connection,$sql2);
 $fetch2 = mysqli_fetch_assoc($result2);
 
+$sid = $fetch2['schoolid'];
+
 $school = $fetch2['schooldesc'];
 $schoolAddress = $fetch2['schoolcity'];
+
+//count all files
+$qry = "select count(id) as allfiles from tbl_process where schoolid=$sid";
+$res = mysqli_query($connection,$qry);
+$fetch = mysqli_fetch_assoc($res);
+
+//count pending
+$qry1 = "select count(id) as pending from tbl_process where schoolid=$sid and status='pending'";
+$res1 = mysqli_query($connection,$qry1);
+$fetch1 = mysqli_fetch_assoc($res1);
+
+//count rejected
+$qry2 = "select count(id) as rejected from tbl_process where schoolid=$sid and status='rejected'";
+$res2 = mysqli_query($connection,$qry2);
+$fetch2 = mysqli_fetch_assoc($res2);
 
 ?>
 
@@ -66,6 +83,15 @@ $schoolAddress = $fetch2['schoolcity'];
 
                             <h6 class="card-text"><?= $school ?></h6>
                             <p class="card-text"><?= $schoolAddress ?></p>
+
+                            <div class="row">
+
+                                <div class="col-3"><h1><?=$fetch['allfiles']?></h1><p>ALL FILES</p></div>
+                                <div class="col-3"><h1><?=$fetch1['pending']?></h1><p>PENDING</p></div>
+                                <div class="col-3"><h1><?=$fetch2['rejected']?></h1><p>REJECTED</p></div>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
