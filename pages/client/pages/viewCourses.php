@@ -90,10 +90,10 @@ $result3 = mysqli_query($connection,$sql3);
                     
                     <?php while($fetch3=mysqli_fetch_assoc($result3)) { ?>
                         <tr>
-                            <td><?=$fetch2['courseid']?></td>
-                            <td><?=$fetch2['coursedesc']?></td>
-                            <td><?=$fetch2['active']?></td>
-                            <td><a href="../../../modules/activeCourse.php?id=<?=$fetch2['courseid']?>" class="btn btn-outline-success">SET ACTIVE</a></td>
+                            <td><?=$fetch3['courseid']?></td>
+                            <td><?=$fetch3['coursedesc']?></td>
+                            <td><?=$fetch3['active']?></td>
+                            <td><a href="../../../modules/activeCourse.php?id=<?=$fetch3['courseid']?>" class="btn btn-outline-success">SET ACTIVE</a></td>
                         </tr>
                     <?php } ?>
                     
