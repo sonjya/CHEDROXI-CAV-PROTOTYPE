@@ -22,6 +22,10 @@ $sql3 = "select concat(year(now()),month(now()),day(now()),'-',hour(now()),minut
 $result3 = mysqli_query($connection,$sql3);
 $fetch3=mysqli_fetch_assoc($result3);
 
+//getting tbl_payments
+$sql4 = "select paymentid,referencenumber,fullname,itemdesc from tbl_payments a inner join tbl_prices b where a.priceid=b.priceid order by paymentid desc limit 3";
+$result4 = mysqli_query($connection,$sql4);
+
 ?>
 <!doctype html>
 <html>
@@ -57,7 +61,7 @@ $fetch3=mysqli_fetch_assoc($result3);
 
                 <div class="card-body">
                     <h5 class="card-title"><?=$user?></h5>
-                    <p class="card-text mb-5">Cashier</p>
+                    <p class="card-text mb-3">Cashier</p>
                     <form method="post" action="../../modules/pay.php">
                         <div class="mb-3">
                             <label class="form-label">Reference Number</label>
@@ -118,6 +122,36 @@ $fetch3=mysqli_fetch_assoc($result3);
 
             </div>
 
+            <hr>
+            <h3>Recent</h3>
+
+            <div class="container-fluid">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Reference Number</th>
+                            <th>Full Name</th>
+                            <th>Payment For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while($fetch4=mysqli_fetch_assoc($result4)) { ?>
+                            <tr>
+                                <td><?=$fetch4['referencenumber']?></td>
+                                <td><?=$fetch4['fullname']?></td>
+                                <td><?=$fetch4['itemdesc']?></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+
+                </table>
+
+
+
+
+            </div>
+
         </div>
 
  
@@ -126,7 +160,7 @@ $fetch3=mysqli_fetch_assoc($result3);
 
         <style>
             .container {
-                margin-top: 100px;
+                margin-top: 80px;
             }
         </style>
 

@@ -181,7 +181,7 @@ $result3 = mysqli_query($connection,$sql3);
 
                 <div class="container-fluid">
                     <input type="submit" class="btn btn-outline-success" value="VALIDATE">
-                    <a href="print.php?id<?=$id?>" class="btn btn-outline-warning">PRINT</a>
+                    <a href="print.php?id=<?=$ID?>" class="btn btn-outline-warning">PRINT</a>
                     <a href="../index.php" class="btn btn-outline-danger">BACK</a>
                 </div>
                 </form>

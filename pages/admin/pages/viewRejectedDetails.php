@@ -15,7 +15,7 @@ $fetch=mysqli_fetch_assoc($result);
 $user = $fetch['lastname'] . ', ' . $fetch['firstname'];
 
 //for getting the data from tbl_process
-$sql2 = "select a.schoolid,schooldesc,schoolcity,firstname,middlename,lastname,a.courseid,coursedesc,applicationtype,mode,SOnumber,graduationdate,systarted,syended,documenttype,requestletter,indorsementletter,tor,diploma,preparedby,referencenumber,reviewedby,commissionerid,status,remarks,a.active from tbl_process a inner join tbl_schools b inner join tbl_courses c inner join tbl_payments d where a.schoolid=b.schoolid and a.courseID=c.courseID and c.schoolid=b.schoolid and a.paymentid=d.paymentid and a.id='$ID'";
+$sql2 = "select a.schoolid,schooldesc,schoolcity,firstname,middlename,lastname,a.courseid,coursedesc,applicationtype,mode,SOnumber,graduationdate,systarted,syended,documenttype,requestletter,indorsementletter,tor,diploma,preparedby,reviewedby,commissionerid,status,remarks,a.active from tbl_process a inner join tbl_schools b inner join tbl_courses c where a.schoolid=b.schoolid and a.courseID=c.courseID and c.schoolid=b.schoolid and a.id='$ID'";
 $result2 = mysqli_query($connection,$sql2);
 $fetch2=mysqli_fetch_assoc($result2);
 
@@ -143,44 +143,15 @@ $result3 = mysqli_query($connection,$sql3);
                     <a href="../../../files/<?= $fetch2['diploma']?>" target="_blank">Diploma</a>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Reference Number</label>
-                    <input class="form-control" type="text" name="referencenumber" value="<?=$fetch2['referencenumber']?>" disabled readonly >
-                </div>
-
-
-                <div class="mb-3">
-                    <label class="form-label">Prepared By</label>
-                    <input type="text" class="form-control" name="preparedby" value="<?=$user?>" disabled>
-                </div>
-
                 <form method="post" action="">
                 <input type="hidden" name="id" value="<?=$ID?>">
-
-                <div class="mb-3">
-                    <label class="form-label">Reviewed By</label>
-                    <input type="text" class="form-control" name="reviewedby" value="<?=$user?>" readonly required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Commissioner</label>
-                        <select class="form-select" aria-label="Default select example" name="commissioner" disabled >  
-                        <option value="">Director VI</option>
-                    </select>
-                </div>
 
                 <div class="mb-3">
                     <label class="form-label">Status</label>
                     <input type="text" class="form-control" name="status" value="<?=$fetch2['status']?>" disabled readonly>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Remarks</label>
-                    <input type="text" class="form-control" name="remarks" value="<?=$fetch2['remarks']?>" disabled >
-                </div>
-
                 <div class="container-fluid">
-                    <input type="submit" class="btn btn-success" value="VALIDATE">
                     <a href="../index.php" class="btn btn-outline-danger">BACK</a>
                 </div>
                 </form>
