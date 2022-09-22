@@ -13,21 +13,11 @@ $fetch=mysqli_fetch_assoc($result);
 
 $user = $fetch['lastname'] . ', ' . $fetch['firstname'];
 
-//count school submissions entries
-$sql2 = "select count(a.schoolid)as entries,a.schoolid,schooldesc from tbl_process a inner join tbl_schools b where a.schoolid=b.schoolid and status='pending' and a.active='yes' group by a.schoolid";
-$result2 = mysqli_query($connection,$sql2);
+$search = $_GET['search'];
 
-//count school submission accepted
-$sql3 = "select count(a.schoolid)as entries,a.schoolid,schooldesc from tbl_process a inner join tbl_schools b where a.schoolid=b.schoolid and status='accepted' and a.active='yes' group by a.schoolid";
-$result3 = mysqli_query($connection,$sql3);
-
-//count school submission rejected
-$sql4 = "select count(a.schoolid)as entries,a.schoolid,schooldesc from tbl_process a inner join tbl_schools b where a.schoolid=b.schoolid and status='rejected' and a.active='yes' group by a.schoolid";
-$result4 = mysqli_query($connection,$sql4);
-
-//count all
-$sql5 = "select count(a.schoolid)as entries,a.schoolid,schooldesc from tbl_process a inner join tbl_schools b where a.schoolid=b.schoolid and a.active='no' group by a.schoolid";
-$result5 = mysqli_query($connection,$sql5);
+//searching data
+$sql = "select a.id,firstname,middlename,lastname,schooldesc,coursedesc,applicationtype,ornumber,preparedby,reviewedby,documenttype,status from tbl_process a inner join tbl_schools b inner join tbl_courses c where a.schoolid=b.schoolid and a.courseid=c.courseid and (firstname like '%$search%' or lastname like '%$search%' or schooldesc like '%$search%') and a.active='yes' order by a.id desc limit 10";
+$result = mysqli_query($connection,$sql);
 
 ?>
 
@@ -35,7 +25,7 @@ $result5 = mysqli_query($connection,$sql5);
 <html>
     <head>
         <title>CHEDROXI-CAV</title>
-        <link href="../../src/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     </head>
 
     <body>
@@ -58,118 +48,80 @@ $result5 = mysqli_query($connection,$sql5);
         </nav>
 
         <div class="container">
-            
-            <h1>HEI SUBMISSIONS</h1>
-            <hr>
-
-            <div class="row">
-
-                <?php while($fetch2=mysqli_fetch_assoc($result2)) { ?>
-
-                    <div class="card m-2" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $fetch2['schooldesc'] ?></h5>
-                            <hr>
-                            <h6 class="card-text"><?= $fetch2['entries'] ?></h6>
-                            <p class="card-text">entries from this HEI.</p>
-                            <a href="pages/viewEntries.php?id=<?= $fetch2['schoolid']?>" class="btn btn-outline-primary">View</a>
-                        </div>
+            <form method='POST' action="../../modules/admin-route.php">
+                <div class="row">
+                    <div class="mb-3 col-8">
+                        <label class="form-label">SEARCH: </label>
+                        <input type="text" class="form-control" name="search">
                     </div>
-
-                <?php } ?>
-
-            </div>
-
-            <h1>FOR REVIEW</h1>
-            <hr>
-
-            <div class="row">
-
-                <?php while($fetch3=mysqli_fetch_assoc($result3)) { ?>
-
-                    <div class="card m-2" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $fetch3['schooldesc'] ?></h5>
-                            <hr>
-                            <h6 class="card-text"><?= $fetch3['entries'] ?></h6>
-                            <p class="card-text">entries from this HEI.</p>
-                            <a href="pages/viewAccepted.php?id=<?= $fetch3['schoolid']?>" class="btn btn-outline-primary">View</a>
-                        </div>
+                    <div class="col-2 mt-4">
+                        <input type="submit" class="btn btn-outline-primary" value="SEARCH">
                     </div>
+                </div>
+            </form>
+        </div>
 
-                <?php } ?>
+        <div class="container-fluid">
 
+            <div class="card">
+                <h5 class="card-header">FILES</h5>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Middle Name</th>
+                                <th>Last Name</th>
+                                <th>HEI</th>
+                                <th>Degree</th>
+                                <th>Application Type</th>
+                                <th>OR No.</th>
+                                <th>Prepared By</th>
+                                <th>Reviewed By</th>
+                                <th>Document Type</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while($fetch = mysqli_fetch_assoc($result)) { ?>
+                                <tr>
+                                    <td><?=$fetch['id']?></td>
+                                    <td><?=$fetch['firstname']?></td>
+                                    <td><?=$fetch['middlename']?></td>
+                                    <td><?=$fetch['lastname']?></td>
+                                    <td><?=$fetch['schooldesc']?></td>
+                                    <td><?=$fetch['coursedesc']?></td>
+                                    <td><?=$fetch['applicationtype']?></td>
+                                    <td><?=$fetch['ornumber']?></td>
+                                    <td><?=$fetch['preparedby']?></td>
+                                    <td><?=$fetch['reviewedby']?></td>
+                                    <td><?=$fetch['documenttype']?></td>
+                                    <td><?=$fetch['status']?></td>
+                                    <td><a href="" class="btn btn-outline-primary">VIEW</a></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-
-            <h1>REJECTED</h1>
-            <hr>
-
-            <div class="row">
-
-                <?php while($fetch4=mysqli_fetch_assoc($result4)) { ?>
-
-                    <div class="card m-2" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $fetch4['schooldesc'] ?></h5>
-                            <hr>
-                            <h6 class="card-text"><?= $fetch4['entries'] ?></h6>
-                            <p class="card-text">entries from this HEI.</p>
-                            <a href="pages/viewRejected.php?id=<?= $fetch4['schoolid']?>" class="btn btn-outline-primary">View</a>
-                        </div>
-                    </div>
-
-                <?php } ?>
-
-            </div>
-
-            <h1>VALIDATED</h1>
-            <hr>
-
-            <div class="row">
-
-                <?php while($fetch4=mysqli_fetch_assoc($result4)) { ?>
-
-                    <div class="card m-2" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $fetch4['schooldesc'] ?></h5>
-                            <hr>
-                            <h6 class="card-text"><?= $fetch4['entries'] ?></h6>
-                            <p class="card-text">entries from this HEI.</p>
-                            <a href="pages/viewRejected.php?id=<?= $fetch4['schoolid']?>" class="btn btn-outline-primary">View</a>
-                        </div>
-                    </div>
-
-                <?php } ?>
-
-            </div>
-
-
-
 
         </div>
 
 
 
 
-
-
-
-
-        <script src="../../src/js/bootstrap.bundle.min.js"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
         <style>
             .container {
                 margin-top: 80px;
-                margin-bottom: 50px;
+                margin-bottom: 5px;
             }
         </style>
    
 
     </body>
-
-
-
-
 
 
 </html>
