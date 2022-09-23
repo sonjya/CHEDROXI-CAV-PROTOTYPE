@@ -7,17 +7,32 @@ include "../../modules/dbconnection.php";
 $UID = $_SESSION['UID'];
 
 //for getting lastname and firstname of the user
-$sql = "select * from tbl_users where userID='$UID' limit 1";
+$sql = "select * from tbl_users a inner join tbl_roles b where a.roleid=b.roleid and userID='$UID' limit 1";
 $result = mysqli_query($connection,$sql);
 $fetch=mysqli_fetch_assoc($result);
 
 $user = $fetch['lastname'] . ', ' . $fetch['firstname'];
+$role = $fetch['roleDesc'];
 
-$search = $_GET['search'];
+//counting all files
+$sql1 = "select count(id) as total from tbl_process where active='yes'";
+$result1 = mysqli_query($connection,$sql1);
+$fetch1 = mysqli_fetch_assoc($result1);
 
-//searching data
-$sql = "select a.id,firstname,middlename,lastname,schooldesc,coursedesc,applicationtype,ornumber,preparedby,reviewedby,documenttype,status from tbl_process a inner join tbl_schools b inner join tbl_courses c where a.schoolid=b.schoolid and a.courseid=c.courseid and (firstname like '%$search%' or lastname like '%$search%' or schooldesc like '%$search%') and a.active='yes' order by a.id desc limit 10";
-$result = mysqli_query($connection,$sql);
+//counting pending
+$sql2 = "select count(id) as total from tbl_process where status='pending' and active='yes'";
+$result2 = mysqli_query($connection,$sql2);
+$fetch2 = mysqli_fetch_assoc($result2);
+
+//counting processing
+$sql3 = "select count(id) as total from tbl_process where status='processing' and active='yes'";
+$result3 = mysqli_query($connection,$sql3);
+$fetch3 = mysqli_fetch_assoc($result3);
+
+//counting rejected
+$sql4 = "select count(id) as total from tbl_process where status='rejected' and active='yes'";
+$result4 = mysqli_query($connection,$sql4);
+$fetch4 = mysqli_fetch_assoc($result4);
 
 ?>
 
@@ -48,67 +63,114 @@ $result = mysqli_query($connection,$sql);
         </nav>
 
         <div class="container">
-            <form method='POST' action="../../modules/admin-route.php">
-                <div class="row">
-                    <div class="mb-3 col-8">
-                        <label class="form-label">SEARCH: </label>
-                        <input type="text" class="form-control" name="search">
-                    </div>
-                    <div class="col-2 mt-4">
-                        <input type="submit" class="btn btn-outline-primary" value="SEARCH">
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div class="container-fluid">
-
             <div class="card">
-                <h5 class="card-header">FILES</h5>
+                <div class="card-header">
+                    CHEDROXI - CAV
+                </div>
                 <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>First Name</th>
-                                <th>Middle Name</th>
-                                <th>Last Name</th>
-                                <th>HEI</th>
-                                <th>Degree</th>
-                                <th>Application Type</th>
-                                <th>OR No.</th>
-                                <th>Prepared By</th>
-                                <th>Reviewed By</th>
-                                <th>Document Type</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php while($fetch = mysqli_fetch_assoc($result)) { ?>
-                                <tr>
-                                    <td><?=$fetch['id']?></td>
-                                    <td><?=$fetch['firstname']?></td>
-                                    <td><?=$fetch['middlename']?></td>
-                                    <td><?=$fetch['lastname']?></td>
-                                    <td><?=$fetch['schooldesc']?></td>
-                                    <td><?=$fetch['coursedesc']?></td>
-                                    <td><?=$fetch['applicationtype']?></td>
-                                    <td><?=$fetch['ornumber']?></td>
-                                    <td><?=$fetch['preparedby']?></td>
-                                    <td><?=$fetch['reviewedby']?></td>
-                                    <td><?=$fetch['documenttype']?></td>
-                                    <td><?=$fetch['status']?></td>
-                                    <td><a href="" class="btn btn-outline-primary">VIEW</a></td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                    <div class="row">
+                        <div class="col-2 m-3">
+                            <img src="https://randomuser.me/api/portraits/men/39.jpg" class="img-thumbnail" alt="NO-IMAGE">
+                        </div>
+                        <div class="col-6 mt-4">
+                            <h1>Welcome <?=$user?></h1>
+                            <h5><?=$role?></h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card">
+                        <div class="card-header">
+                            APPLICATIONS
+                        </div>
+                        <div class="body">
+                            <div class="row m-3 col-12">
+                                <div class="col-3">
+                                    <h6>ALL FILES</h6>
+                                    <h1><?=$fetch1['total']?></h1>
+                                </div>
+                                <div class="col-3">
+                                    <h6>PENDING</h6>
+                                    <h1><?=$fetch2['total']?></h1>
+                                </div>
+                                <div class="col-3">
+                                    <h6>PROCESSING</h6>
+                                    <h1><?=$fetch3['total']?></h1>
+                                </div>
+                                <div class="col-3">
+                                    <h6>REJECTED</h6>
+                                    <h1><?=$fetch4['total']?></h1> 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4"></div>
+                                    <a href="../../modules/admin-viewfiles-route.php?search=" class="col-4 mb-3 btn btn-outline-primary">VIEW</a>
+                                <div class="col-5"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                <hr>
+
+                                            
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header">(HEI) HIGHER EDUCATIONAL INSTITUTION</div>
+                                <div class="card-body">
+                                    <p>Add, delete, or edit school information.</p>
+                                    <a href="../../modules/admin-viewschools-route.php?search=" class="btn btn-outline-primary col-4">VIEW</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header">SYSTEM USERS</div>
+                                <div class="card-body">
+                                    <p>View this to view users of the system</p>
+                                    <a href="" class="btn btn-outline-primary col-4">VIEW</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header">COMMISSIONERS</div>
+                                <div class="card-body">
+                                    <p>View this to view users of the system</p>
+                                    <a href="" class="btn btn-outline-primary col-4">VIEW</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header">PRICES</div>
+                                <div class="card-body">
+                                    <p>View this to view users of the system</p>
+                                    <a href="" class="btn btn-outline-primary col-4">VIEW</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
                 </div>
             </div>
 
         </div>
-
+    
 
 
 
