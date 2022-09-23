@@ -44,7 +44,7 @@ $result4 = mysqli_query($connection,$sql4);
                 <li class="nav-item dropdown d-flex">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= $user ?></a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Profile settings</a></li>
+                            <li><a class="dropdown-item" href="../shared/viewProfile.php">Profile settings</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="../../modules/logout.php" style="color: red;">LOGOUT</a></li>
                         </ul>

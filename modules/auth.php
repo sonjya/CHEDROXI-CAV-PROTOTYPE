@@ -18,10 +18,9 @@ if (!$fetch) {
     if ($fetch['roleDesc'] === 'ADMINISTRATOR') {
         $_SESSION['UID'] = $fetch['userID'];
         header('Location:../pages/admin/index.php');
-    } else if ($fetch['roleDesc'] === 'PROCESSOR') {
-        die("ADMINISTRATOR PAGE");
-    } else if ($fetch['roleDesc'] === 'VALIDATOR') {
-        die("ADMINISTRATOR PAGE");
+    } else if ($fetch['roleDesc'] === 'MODERATOR') {
+        $_SESSION['UID'] = $fetch['userID'];
+        header('Location:../pages/admin/index.php');
     } else if ($fetch['roleDesc'] === 'CASHIER') {
         $_SESSION['UID'] = $fetch['userID'];
         header('Location:../pages/cashier/index.php');

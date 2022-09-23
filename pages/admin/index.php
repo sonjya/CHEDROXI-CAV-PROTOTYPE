@@ -53,7 +53,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                 <li class="nav-item dropdown d-flex">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= $user ?></a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Profile settings</a></li>
+                            <li><a class="dropdown-item" href="../shared/viewProfile.php">Profile settings</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="../../modules/logout.php" style="color: red;">LOGOUT</a></li>
                         </ul>
@@ -70,7 +70,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                 <div class="card-body">
                     <div class="row">
                         <div class="col-2 m-3">
-                            <img src="https://randomuser.me/api/portraits/men/39.jpg" class="img-thumbnail" alt="NO-IMAGE">
+                            <img src="https://randomuser.me/api/portraits/men/39.jpg" class="img-thumbnail img-user" alt="NO-IMAGE">
                         </div>
                         <div class="col-6 mt-4">
                             <h1>Welcome <?=$user?></h1>
@@ -119,7 +119,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                                 <div class="card-header">(HEI) HIGHER EDUCATIONAL INSTITUTION</div>
                                 <div class="card-body">
                                     <p>Add, delete, or edit school information.</p>
-                                    <a href="../../modules/admin-viewschools-route.php?search=" class="btn btn-outline-primary col-4">VIEW</a>
+                                    <a href="../../modules/admin-viewschools-route.php?search=" class="btn btn-outline-primary col-4 <?php if($role == 'ADMINISTRATOR') {} else {echo "disabled";} ?>">VIEW</a>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                                 <div class="card-header">SYSTEM USERS</div>
                                 <div class="card-body">
                                     <p>View this to view users of the system</p>
-                                    <a href="" class="btn btn-outline-primary col-4">VIEW</a>
+                                    <a href="" class="btn btn-outline-primary col-4 <?php if($role == 'ADMINISTRATOR') {} else {echo "disabled";} ?>">VIEW</a>
                                 </div>
                             </div>
                         </div>
@@ -144,7 +144,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                                 <div class="card-header">COMMISSIONERS</div>
                                 <div class="card-body">
                                     <p>View this to view users of the system</p>
-                                    <a href="" class="btn btn-outline-primary col-4">VIEW</a>
+                                    <a href="" class="btn btn-outline-primary col-4 <?php if($role == 'ADMINISTRATOR') {} else {echo "disabled";} ?>">VIEW</a>
                                 </div>
                             </div>
                         </div>
@@ -161,11 +161,6 @@ $fetch4 = mysqli_fetch_assoc($result4);
 
                     </div>
 
-
-
-
-
-
                 </div>
             </div>
 
@@ -173,12 +168,14 @@ $fetch4 = mysqli_fetch_assoc($result4);
     
 
 
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
         <style>
             .container {
                 margin-top: 80px;
                 margin-bottom: 5px;
+            }
+            .img-user {
+                border-radius: 50%;
             }
         </style>
    
