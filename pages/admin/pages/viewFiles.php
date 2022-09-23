@@ -50,6 +50,7 @@ $result = mysqli_query($connection,$sql);
         <div class="container">
             <form method='POST' action="../../../modules/admin-viewfiles-route.php">
                 <div class="row">
+                    <div class="col-1"></div>
                     <div class="mb-3 col-8">
                         <label class="form-label">SEARCH: </label>
                         <input type="text" class="form-control" name="search">
