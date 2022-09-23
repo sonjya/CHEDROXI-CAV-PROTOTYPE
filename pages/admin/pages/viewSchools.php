@@ -50,7 +50,7 @@ $result1 = mysqli_query($connection,$sql1);
 
         <div class="container">
             <div class="card">
-                <div class="card-header">SCHOOLS</div>
+                <div class="card-header">(HEI) HIGHER EDUCATIONAL INSTITUTION</div>
                 <div class="card-body">
                     <form method='post' action="../../../modules/admin-viewschools-route.php">
                         <div class="row">
