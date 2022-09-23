@@ -44,11 +44,11 @@ $fetch = mysqli_fetch_assoc($result);
                         </div>
                         <div class="mb-3">
                             <div class="form-label">NEW PASSWORD</div>
-                            <input type="password" class="form-control" name="newpassword1" value="<?=$fetch['password']?>" >
+                            <input type="password" class="form-control" name="newpassword1" value="<?=$fetch['password']?>" required>
                         </div>
                         <div class="mb-5">
                             <div class="form-label">CONFIRM PASSWORD</div>
-                            <input type="password" class="form-control" name="newpassword2" value="<?=$fetch['password']?>" >
+                            <input type="password" class="form-control" name="newpassword2" value="<?=$fetch['password']?>" required>
                         </div>
                         <hr>
                         <div class="mb-3">
