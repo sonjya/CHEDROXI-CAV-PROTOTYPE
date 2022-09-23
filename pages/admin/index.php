@@ -129,7 +129,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                                 <div class="card-header">SYSTEM USERS</div>
                                 <div class="card-body">
                                     <p>View this to view users of the system</p>
-                                    <a href="" class="btn btn-outline-primary col-4 <?php if($role == 'ADMINISTRATOR') {} else {echo "disabled";} ?>">VIEW</a>
+                                    <a href="../../modules/admin-viewusers-route.php?search=" class="btn btn-outline-primary col-4 <?php if($role == 'ADMINISTRATOR') {} else {echo "disabled";} ?>">VIEW</a>
                                 </div>
                             </div>
                         </div>
@@ -144,7 +144,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                                 <div class="card-header">COMMISSIONERS</div>
                                 <div class="card-body">
                                     <p>View this to view users of the system</p>
-                                    <a href="" class="btn btn-outline-primary col-4 <?php if($role == 'ADMINISTRATOR') {} else {echo "disabled";} ?>">VIEW</a>
+                                    <a href="../../modules/admin-viewcommissioners-route.php?search=" class="btn btn-outline-primary col-4 <?php if($role == 'ADMINISTRATOR') {} else {echo "disabled";} ?>">VIEW</a>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                                 <div class="card-header">PRICES</div>
                                 <div class="card-body">
                                     <p>View this to view users of the system</p>
-                                    <a href="" class="btn btn-outline-primary col-4">VIEW</a>
+                                    <a href="../../modules/admin-viewprices-route.php?search=" class="btn btn-outline-primary col-4">VIEW</a>
                                 </div>
                             </div>
                         </div>
