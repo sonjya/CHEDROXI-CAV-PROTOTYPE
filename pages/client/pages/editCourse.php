@@ -69,7 +69,7 @@ $fetch2 = mysqli_fetch_assoc($result2);
 
                 <div class="mb-3">
                     <input type="submit" class="btn btn-outline-success" value="UPDATE">
-                    <a href="viewCourses.php" class="btn btn-outline-danger">CANCEL</a>
+                    <a href="../../../modules/client-viewcourses-route.php" class="btn btn-outline-danger">CANCEL</a>
                 </div>
 
             </form>

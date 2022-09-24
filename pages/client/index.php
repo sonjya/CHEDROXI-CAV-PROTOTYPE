@@ -23,20 +23,13 @@ $sid = $fetch2['schoolid'];
 $school = $fetch2['schooldesc'];
 $schoolAddress = $fetch2['schoolcity'];
 
-//count all files
-$qry = "select count(id) as allfiles from tbl_process where schoolid=$sid";
-$res = mysqli_query($connection,$qry);
-$fetch = mysqli_fetch_assoc($res);
+//getting status values group by
+$sql3 = "select count(a.id) as total,status from tbl_process a inner join tbl_user_school b where a.schoolid=b.schoolid and userid='$UID' group by status";
+$result3 = mysqli_query($connection,$sql3);
 
-//count pending
-$qry1 = "select count(id) as pending from tbl_process where schoolid=$sid and status='pending'";
-$res1 = mysqli_query($connection,$qry1);
-$fetch1 = mysqli_fetch_assoc($res1);
-
-//count rejected
-$qry2 = "select count(id) as rejected from tbl_process where schoolid=$sid and status='rejected'";
-$res2 = mysqli_query($connection,$qry2);
-$fetch2 = mysqli_fetch_assoc($res2);
+$sql4 = "select count(*) as total from tbl_process a inner join tbl_user_school b where a.schoolid=b.schoolid and userid='$UID'";
+$result4 = mysqli_query($connection,$sql4);
+$fetch4 = mysqli_fetch_assoc($result4);
 
 ?>
 
@@ -68,114 +61,106 @@ $fetch2 = mysqli_fetch_assoc($res2);
         
         <div class="container">
 
-            <div class="card greeting" style="max-width: 800px;">
-                <div class="row g-0">
-                    
-                    <div class="col-md-4">
-                        <img src="../../images/james.png" width="300" height="400" class="img-fluid rounded-start">
-                    </div>
-
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Welcome <?=$user?> !</h5>
-
-                            <hr>
-
-                            <h6 class="card-text"><?= $school ?></h6>
-                            <p class="card-text"><?= $schoolAddress ?></p>
-
-                            <div class="row">
-
-                                <div class="col-3"><h1><?=$fetch['allfiles']?></h1><p>ALL FILES</p></div>
-                                <div class="col-3"><h1><?=$fetch1['pending']?></h1><p>PENDING</p></div>
-                                <div class="col-3"><h1><?=$fetch2['rejected']?></h1><p>REJECTED</p></div>
-
-                            </div>
-
+            <div class="card">
+                <div class="card-header"><?=$school . ' - School Registrar'?></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-2 m-3">
+                            <img src="https://randomuser.me/api/portraits/men/39.jpg" class="img-thumbnail img-profile" alt="NO-IMAGE">
+                        </div>
+                        <div class="col mt-4">
+                            <h1>Welcome <?=$user?></h1>
+                            <h5><?=$school?></h5>
+                            <p><?=$schoolAddress?></p>
                         </div>
                     </div>
-                </div>
+                    
+                    <hr>
 
+                    <div class="card">
+                        <div class="card-header">Applications</div>
+                        <div class="card-body">
+                            <div class="row">
+                                    <div class="col-3">
+                                        <h6>All Files</h6>
+                                        <h1><?=$fetch4['total']?></h1>
+                                    </div>
+                                <?php while($fetch3=mysqli_fetch_assoc($result3)) {?>
+                                    <div class="col-3" <?php if($fetch3['status'] == "Rejected") {echo "style='color:red;'";} elseif ($fetch3['status'] == "Pending") {echo "style='color:orange;'";} elseif ($fetch3['status'] == "Processing") {echo "style='color:green;'";}?>>
+                                        <h6><?=$fetch3['status']?></h6>
+                                        <h1><?=$fetch3['total']?></h1>
+                                    </div>
+                                <?php } ?>
+                                <!-- <div class="col-3">
+                                    <h6>ALL FILES</h6>
+                                    <h1>100</h1>
+                                </div>
+                                <div class="col-3">
+                                    <h6>PENDING</h6>
+                                    <h1>100</h1>
+                                </div>
+                                <div class="col-3">
+                                    <h6>PROCESSING</h6>
+                                    <h1>100</h1>
+                                </div>
+                                <div class="col-3">
+                                    <h6>REJECTED</h6>
+                                    <h1>100</h1>
+                                </div> -->
+                            </div>
+                            <div class="row">
+                                <div class="col-4"></div>
+                                <div class="col"><a href="" class="btn btn-outline-primary col-5">VIEW</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header">SUBMIT APPLICATION</div>
+                                <div class="card-body">
+                                    <form method="post" action="../../modules/client-applicationtype-route.php">
+                                        <p>select application type.</p>
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <select class="form-select" name="applicationtype">
+                                                    <option value="1">SPECIAL ORDER</option>
+                                                    <option value="2">UNITS EARNER</option>
+                                                    <option value="3">CAR</option>
+                                                    <option value="4">ACCREDITATION STATUS</option>
+                                                    <option value="5">ASSOCIATE/DIPLOMA/GRADUATE</option>
+                                                    <option value="6">CTE/RSTC/ECE</option>
+                                                    <option value="7">LEBC/LAW COURSE</option>
+                                                </select>
+                                            </div>
+                                            <input type="submit" class="btn btn-outline-primary col-3" value="APPLY">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header">SCHOOL COURSES</div>
+                                <div class="card-body">
+                                    <p>view courses.</p>
+                                    <a href="pages/viewCourses.php?search=" class="btn btn-outline-primary col-4">VIEW</a>
+                                </div>
+                            </div>
+                        </div>
+                            
+                    </div>
+
+                </div>
             </div>
 
-            <hr>
-            <h1>Application</h1>
-            <div class="row">
-                
-                <div class="card m-2" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Special Order</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="pages/specialorder.php" class="btn btn-outline-primary">Encode</a>
-                    </div>
-                </div>
 
-                <div class="card m-2" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Units Earner</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-outline-primary">Encode</a>
-                    </div>
-                </div>
-
-                <div class="card m-2" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">CAR</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-outline-primary">Encode</a>
-                    </div>
-                </div>
-
-                <div class="card m-2" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Accreditation</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-outline-primary">Encode</a>
-                    </div>
-                </div>
-
-                <div class="card m-2" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">CTE/RSTC/ECE</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-outline-primary">Encode</a>
-                    </div>
-                </div>
-
-                <hr>
-                <h1>Options</h1>
-                <div class="card m-2" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">View Submitted Files</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-outline-primary">View</a>
-                    </div>
-                </div>
-
-                <div class="card m-2" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Courses</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="pages/viewCourses.php" class="btn btn-outline-primary">View</a>
-                    </div>
-                </div>
-
-
-
-
-            </div>
-        
         </div>
 
-
-
-
-
-
-
-
-
-
+         
 
 
         <script src="../../src/js/bootstrap.bundle.min.js"></script>
@@ -187,6 +172,9 @@ $fetch2 = mysqli_fetch_assoc($res2);
             }
             .greeting {
                 margin-left: 30px;
+            }
+            .img-profile {
+                border-radius:50%;
             }
         </style>
    

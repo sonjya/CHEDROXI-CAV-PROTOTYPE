@@ -13,8 +13,10 @@ $fetch=mysqli_fetch_assoc($result);
 
 $user = $fetch['lastname'] . ', ' . $fetch['firstname'];
 
+$search = $_GET['search'];
+
 //for school name and school address
-$sql2 = "select courseid,coursedesc,a.active,c.schoolid from tbl_courses a inner join tbl_schools b inner join tbl_user_school c where a.schoolid=b.schoolid and b.schoolid=c.schoolid and c.userid=$UID";
+$sql2 = "select courseid,coursedesc,a.active,c.schoolid from tbl_courses a inner join tbl_schools b inner join tbl_user_school c where a.schoolid=b.schoolid and b.schoolid=c.schoolid and c.userid=$UID and coursedesc like '%$search%'";
 $result2 = mysqli_query($connection,$sql2);
 
 ?>
@@ -46,7 +48,20 @@ $result2 = mysqli_query($connection,$sql2);
         </nav>
 
         <div class="container">
-            <h1>Active Courses</h1>
+                
+            <form method="post" action="../../../modules/client-viewcourses-route.php">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" name="search">
+                    </div>
+                    <div class="col-3">
+                        <input type="submit" class="btn btn-outline-primary" value="SEARCH"> <a href="../index.php" class="btn btn-outline-danger">BACK</a>
+                    </div>
+                </div>
+            </form>
+
+
             <table class="table">
                 <thead>
                     <tr>
@@ -63,17 +78,7 @@ $result2 = mysqli_query($connection,$sql2);
                             <td><?=$fetch2['courseid']?></td>
                             <td><?=$fetch2['coursedesc']?></td>
                             <td><?=$fetch2['active']?></td>
-                            <td>                            
-                            
-                                <?php if($fetch2['active'] == 'yes') { ?>
-                                    <a href="../../../modules/inactiveCourse.php?id=<?=$fetch2['courseid']?>" class="btn btn-warning">SET INACTIVE</a>
-                                <?php } elseif ($fetch2['active'] == 'no') { ?>
-                                    <a href="../../../modules/activeCourse.php?id=<?=$fetch2['courseid']?>" class="btn btn-success">SET ACTIVE</a>
-                                <?php } ?>
-
-                            </td>
-                            <td><a href="editCourse.php?id=<?=$fetch2['courseid']?>" class="btn btn-primary">EDIT</a></td>
-
+                            <td><a href="editCourse.php?id=<?=$fetch2['courseid']?>" class="btn btn-outline-primary">EDIT</a></td>
                         </tr>
                     <?php } ?>
                     
@@ -92,7 +97,6 @@ $result2 = mysqli_query($connection,$sql2);
                         <div class="col-3">
                             <input type="hidden" value="<?=$schoolid?>" name="schoolid">
                             <input type="submit" class="btn btn-outline-primary" value="ADD">
-                            <a href="../index.php" class="btn btn-outline-danger">BACK</a>
                         </div>
                     </div>
                 </form>
