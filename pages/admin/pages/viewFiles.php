@@ -16,7 +16,7 @@ $user = $fetch['lastname'] . ', ' . $fetch['firstname'];
 $search = $_GET['search'];
 
 //searching data
-$sql = "select a.id,firstname,middlename,lastname,schooldesc,coursetitle,applicationtype,ornumber,preparedby,reviewedby,documenttype,status from tbl_process a inner join tbl_schools b inner join tbl_courses c where a.schoolid=b.schoolid and a.courseid=c.courseid and (firstname like '%$search%' or lastname like '%$search%' or schooldesc like '%$search%') and a.active='yes' order by a.id desc limit 10";
+$sql = "select a.id,firstname,middlename,lastname,schooldesc,coursetitle,applicationtype,ornumber,preparedby,reviewedby,documenttype,status from tbl_process a inner join tbl_schools b inner join tbl_courses c where a.schoolid=b.schoolid and a.courseid=c.courseid and (firstname like '%$search%' or lastname like '%$search%' or schooldesc like '%$search%' or status like '%$search%') and a.active='yes' order by a.id desc limit 10";
 $result = mysqli_query($connection,$sql);
 
 ?>
@@ -88,7 +88,7 @@ $result = mysqli_query($connection,$sql);
                         </thead>
                         <tbody>
                             <?php while($fetch = mysqli_fetch_assoc($result)) { ?>
-                                <tr>
+                                <tr <?php if ($fetch['status'] == 'Pending') {echo "style='background-color:#FFB74D;'";} elseif ($fetch['status'] == 'Processing') {echo "style='background-color:#A5D6A7;'";} elseif ($fetch['status'] == 'Rejected') {echo "style='background-color:#FFAB91;'";}?>>
                                     <td><?=$fetch['id']?></td>
                                     <td><?=$fetch['firstname']?></td>
                                     <td><?=$fetch['middlename']?></td>

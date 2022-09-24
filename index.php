@@ -9,7 +9,7 @@ session_start();
         <link href="src/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
-    <body>
+    <body class="body-bg">
         <div class="container" style="width: 30rem;">
                 <div class="col-9">
                     <div class="card">
@@ -46,6 +46,9 @@ session_start();
         <style>
             .container {
                 margin-top: 100px;
+            }
+            .body-bg {
+                background-color:#E0E0E0;
             }
         </style>
 
