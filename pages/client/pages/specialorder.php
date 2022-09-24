@@ -96,7 +96,7 @@ $result2 = mysqli_query($connection,$sql2);
 
                                 <div class="mb-3">
                                     <label class="form-label">Middle Name</label>
-                                    <input type="text" class="form-control" name="middlename" required>
+                                    <input type="text" class="form-control" name="middlename">
                                 </div>
                                 
                                 <div class="mb-3">
@@ -143,7 +143,7 @@ $result2 = mysqli_query($connection,$sql2);
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Indorsement Letter</label>
+                                    <label class="form-label">Endorsement Letter</label>
                                     <input class="form-control" type="file" name="indorsementletter" accept=".pdf,.jpg,.jpeg,.png" required>
                                 </div>
 
