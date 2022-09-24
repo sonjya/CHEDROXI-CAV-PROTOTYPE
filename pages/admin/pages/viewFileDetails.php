@@ -13,11 +13,16 @@ $fetch=mysqli_fetch_assoc($result);
 
 $user = $fetch['lastname'] . ', ' . $fetch['firstname'];
 
+$id = $_GET['id'];
 
-
-//get all data
-$sql1 = "select a.id,firstname,middlename,lastname,coursedesc,applicationtype,ornumber,preparedby,reviewedby,documenttype,a.status from tbl_process a inner join tbl_courses b inner join tbl_user_school c where a.courseid=b.courseid and a.schoolid=c.schoolid and userid='$UID' and (lastname like '%$search%' or middlename like '%$search%' or firstname like '%$search%' or coursedesc like '%$search%' or applicationtype like '%$search%' or ornumber like '%$search%' or status like '%$search%')";
+//getting all data
+$sql1 = "select a.id,schooldesc,firstname,middlename,lastname,coursedesc,applicationtype,mode,sonumber,graduationdate,systarted,syended,documenttype,requestletter,indorsementletter,tor,diploma,ornumber,preparedby,reviewedby,status,created_at,updated_at,updatedby,a.active from tbl_process a inner join tbl_schools b inner join tbl_courses c where a.schoolid=b.schoolid and a.courseid=c.courseid and a.id='$id'";
 $result1 = mysqli_query($connection,$sql1);
+$fetch1 = mysqli_fetch_assoc($result1);
+
+//getting commissioner
+$sql2 = "select * from tbl_commissioners";
+$result2 = mysqli_query($connection,$sql2);
 
 ?>
 
@@ -31,7 +36,7 @@ $result1 = mysqli_query($connection,$sql1);
     <body class="body-bg">
 
         <!-- navbar -->
-        <nav class="navbar fixed-top" style="background-color: #69F0AE;">
+        <nav class="navbar fixed-top" style="background-color: #FDD835;">
             <div class="container-fluid">
                 <a class="navbar-brand">CHEDROXI-CAV</a>
                 
@@ -46,6 +51,156 @@ $result1 = mysqli_query($connection,$sql1);
 
             </div>
         </nav>
+        
+      <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row mb-2">
+                                        <div class="col-4"><h5>ID</h5></div>
+                                        <div class="col"><input type="text" class="form-control" value="<?=$fetch1['id']?>" readonly></div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-4"><h5>First Name</h5></div>
+                                        <div class="col"><input type="text" class="form-control" value="<?=$fetch1['firstname']?>" readonly></div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-4"><h5>Middle Name</h5></div>
+                                        <div class="col"><input type="text" class="form-control" value="<?=$fetch1['middlename']?>" readonly></div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-4"><h5>Last Name</h5></div>
+                                        <div class="col"><input type="text" class="form-control" value="<?=$fetch1['lastname']?>" readonly></div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-4"><h5>School</h5></div>
+                                        <div class="col"><input type="text" class="form-control" value="<?=$fetch1['schooldesc']?>" readonly></div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-4"><h5>Course</h5></div>
+                                        <div class="col"><input type="text" class="form-control" value="<?=$fetch1['coursedesc']?>" readonly></div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-4"><h5>Application Type</h5></div>
+                                        <div class="col"><input type="text" class="form-control" value="<?=$fetch1['applicationtype']?>" readonly></div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-4"><h5>Mode</h5></div>
+                                        <div class="col"><input type="text" class="form-control" value="<?=$fetch1['mode']?>" readonly></div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-4"><h5>SO Number</h5></div>
+                                        <div class="col"><input type="text" class="form-control" value="<?=$fetch1['sonumber']?>" readonly></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row mb-2">
+                                            <div class="col-4"><h5>Graduation Date</h5></div>
+                                            <div class="col"><input type="text" class="form-control" value="<?=$fetch1['graduationdate']?>" readonly></div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-4"><h5>SY Started</h5></div>
+                                            <div class="col"><input type="text" class="form-control" value="<?=$fetch1['systarted']?>" readonly></div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-4"><h5>SY Ended</h5></div>
+                                            <div class="col"><input type="text" class="form-control" value="<?=$fetch1['syended']?>" readonly></div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-4"><h5>Document Type</h5></div>
+                                            <div class="col"><input type="text" class="form-control" value="<?=$fetch1['documenttype']?>" readonly></div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-4"><h5>Prepared By</h5></div>
+                                            <div class="col"><input type="text" class="form-control" value="<?=$fetch1['preparedby']?>" readonly></div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-4"><h5>Reviewed By</h5></div>
+                                            <div class="col"><input type="text" class="form-control" value="<?=$fetch1['reviewedby']?>" readonly></div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-4"><h5>Status</h5></div>
+                                            <div class="col"><input type="text" class="form-control" value="<?=$fetch1['status']?>" readonly></div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-4"><h5>Date Applied</h5></div>
+                                            <div class="col"><input type="text" class="form-control" value="<?=$fetch1['created_at']?>" readonly></div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-4"><h5>Last Update</h5></div>
+                                            <div class="col"><input type="text" class="form-control" value="<?=$fetch1['updated_at'] . ' by ' . $fetch1['updatedby']?>" readonly></div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                <br>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <a href="../../../files/<?=$fetch1['requestletter']?>" target="_blank" class="btn btn-outline-primary col-3">REQUEST LETTER</a>
+                            <a href="../../../files/<?=$fetch1['indorsementletter']?>" target="_blank" class="btn btn-outline-primary col-3">ENDORSEMENT LETTER</a>
+                            <a href="../../../files/<?=$fetch1['tor']?>" target="_blank" class="btn btn-outline-primary col-3">TRANSCRIPT OF RECORDS</a>
+                            <a href="../../../files/<?=$fetch1['diploma']?>" target="_blank" class="btn btn-outline-primary col-3">DIPLOMA</a>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <h6>OR NUMBER: </h6>
+                                <input type="text" class="form-control" name="ornumber" value="<?=$fetch1['ornumber']?>">
+                            </div>
+                            <div class="col-4">
+                                <h6>COMMISSIONER: </h6>
+                                <select class="form-select" name="commissioner">
+                                    <?php while($fetch2 = mysqli_fetch_assoc($result2)) { ?>
+                                        <option value="<?=$fetch2['commissionerID']?>"><?=$fetch2['fullName']?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <!-- button ni dre -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+      </div>
 
 
 

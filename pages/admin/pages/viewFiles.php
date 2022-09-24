@@ -104,7 +104,7 @@ $result = mysqli_query($connection,$sql);
                                     <td><?=$fetch['reviewedby']?></td>
                                     <td><?=$fetch['documenttype']?></td>
                                     <td><?=$fetch['status']?></td>
-                                    <td><a href="" class="btn btn-outline-primary">VIEW</a></td>
+                                    <td><a href="viewFileDetails.php?id=<?=$fetch['id']?>" class="btn btn-outline-primary">VIEW</a></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
