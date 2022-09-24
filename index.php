@@ -9,9 +9,9 @@ session_start();
         <link href="src/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
-    <body class="body-bg">
+    <body class="body-bg bg-image">
         <div class="container" style="width: 30rem;">
-                <div class="col-9">
+                <div class="col-12">
                     <div class="card">
                         <img src="images/logo.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -30,7 +30,10 @@ session_start();
                                         </div>
                                 <?php } ?>
 
-                                <input type="submit" class="btn btn-outline-success" value="LOGIN">
+                                <div class="row">
+                                    <div class="col-3"></div>
+                                    <input type="submit" class="btn btn-outline-success col-6" value="LOGIN">
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -49,6 +52,13 @@ session_start();
             }
             .body-bg {
                 background-color:#E0E0E0;
+            }
+            .bg-image {
+            background-image: url("images/chedroxi.png");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
             }
         </style>
 

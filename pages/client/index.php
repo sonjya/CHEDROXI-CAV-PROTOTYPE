@@ -94,7 +94,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                             </div>
                             <div class="row">
                                 <div class="col-4"></div>
-                                <div class="col"><a href="../../modules/client-viewfiles-route.php" class="btn btn-outline-primary col-5">VIEW</a></div>
+                                <div class="col"><a href="../../modules/client-viewfiles-route.php" class="btn btn-outline-primary col-6">VIEW</a></div>
                             </div>
                         </div>
                     </div>
