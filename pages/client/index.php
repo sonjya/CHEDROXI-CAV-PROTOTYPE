@@ -91,26 +91,10 @@ $fetch4 = mysqli_fetch_assoc($result4);
                                         <h1><?=$fetch3['total']?></h1>
                                     </div>
                                 <?php } ?>
-                                <!-- <div class="col-3">
-                                    <h6>ALL FILES</h6>
-                                    <h1>100</h1>
-                                </div>
-                                <div class="col-3">
-                                    <h6>PENDING</h6>
-                                    <h1>100</h1>
-                                </div>
-                                <div class="col-3">
-                                    <h6>PROCESSING</h6>
-                                    <h1>100</h1>
-                                </div>
-                                <div class="col-3">
-                                    <h6>REJECTED</h6>
-                                    <h1>100</h1>
-                                </div> -->
                             </div>
                             <div class="row">
                                 <div class="col-4"></div>
-                                <div class="col"><a href="" class="btn btn-outline-primary col-5">VIEW</a></div>
+                                <div class="col"><a href="../../modules/client-viewfiles-route.php" class="btn btn-outline-primary col-5">VIEW</a></div>
                             </div>
                         </div>
                     </div>
