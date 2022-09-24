@@ -40,7 +40,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
         <link href="../../src/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
-    <body>
+    <body class="body-bg">
 
         <!-- navbar -->
         <nav class="navbar fixed-top" style="background-color: #69F0AE;">
@@ -160,6 +160,9 @@ $fetch4 = mysqli_fetch_assoc($result4);
             }
             .img-profile {
                 border-radius:50%;
+            }
+            .body-bg {
+                background-color:#E0E0E0E0;
             }
         </style>
    

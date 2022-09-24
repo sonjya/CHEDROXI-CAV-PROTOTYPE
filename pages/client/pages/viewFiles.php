@@ -28,7 +28,7 @@ $result1 = mysqli_query($connection,$sql1);
         <link href="../../../src/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
-    <body>
+    <body class="body-bg">
 
         <!-- navbar -->
         <nav class="navbar fixed-top" style="background-color: #69F0AE;">
@@ -49,60 +49,69 @@ $result1 = mysqli_query($connection,$sql1);
 
         <div class="container">
                 
-            <form method="post" action="../../../modules/client-viewfiles-route.php">
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-6">
-                        <input type="text" class="form-control" name="search">
-                    </div>
-                    <div class="col-3">
-                        <input type="submit" class="btn btn-outline-primary" value="SEARCH"> <a href="../index.php" class="btn btn-outline-danger">BACK</a>
-                    </div>
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" action="../../../modules/client-viewfiles-route.php">
+                        <div class="row">
+                            <div class="col-2 mt-2"><label class="form-label"><h1>SEARCH:</h1></label></div>
+                            <div class="col-8 mt-3">
+                                <input type="text" class="form-control" name="search">
+                            </div>
+                            <div class="col mt-3">
+                                <input type="submit" class="btn btn-outline-primary" value="SEARCH"> <a href="../index.php" class="btn btn-outline-danger">BACK</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
 
         </div>
 
-        <!-- <div class="container-fluid"> -->
-            
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>First Name</th>
-                        <th>Middle Name</th>
-                        <th>Last Name</th>
-                        <th>Degree</th>
-                        <th>Application Type</th>
-                        <th>OR No.</th>
-                        <th>Prepared By</th>
-                        <th>Reviewed By</th>
-                        <th>Document Type</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while($fetch1=mysqli_fetch_assoc($result1)) { ?>
-                        <tr <?php if($fetch1['status'] == 'Pending') {echo "style=background-color:#FFCC80";} elseif ($fetch1['status'] == 'Processing') {echo "style=background-color:#A5D6A7";} elseif ($fetch1['status'] == 'Rejected') {echo "style=background-color:#EF9A9A";}?>>
-                            <td><?=$fetch1['id']?></td>
-                            <td><?=$fetch1['firstname']?></td>
-                            <td><?=$fetch1['middlename']?></td>
-                            <td><?=$fetch1['lastname']?></td>
-                            <td><?=$fetch1['coursedesc']?></td>
-                            <td><?=$fetch1['applicationtype']?></td>
-                            <td><?=$fetch1['ornumber']?></td>
-                            <td><?=$fetch1['preparedby']?></td>
-                            <td><?=$fetch1['reviewedby']?></td>
-                            <td><?=$fetch1['documenttype']?></td>
-                            <td><?=$fetch1['status']?></td>
-                            <td><a href="" class="btn btn-outline-primary">VIEW</a></td>
+        <div class="container-fluid"> 
+            <div class="card">
+                <div class="card-header">APPLICATIONS</div>
+                <div class="card-body">
+                    <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Last Name</th>
+                            <th>Degree</th>
+                            <th>Application Type</th>
+                            <th>OR No.</th>
+                            <th>Prepared By</th>
+                            <th>Reviewed By</th>
+                            <th>Document Type</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-<!-- 
-        </div> -->
+                    </thead>
+                    <tbody>
+                        <?php while($fetch1=mysqli_fetch_assoc($result1)) { ?>
+                            <tr <?php if($fetch1['status'] == 'Pending') {echo "style=background-color:#FFE0B2";} elseif ($fetch1['status'] == 'Processing') {echo "style=background-color:#C8E6C9";} elseif ($fetch1['status'] == 'Rejected') {echo "style=background-color:#FFCDD2";}?>>
+                                <td><?=$fetch1['id']?></td>
+                                <td><?=$fetch1['firstname']?></td>
+                                <td><?=$fetch1['middlename']?></td>
+                                <td><?=$fetch1['lastname']?></td>
+                                <td><?=$fetch1['coursedesc']?></td>
+                                <td><?=$fetch1['applicationtype']?></td>
+                                <td><?=$fetch1['ornumber']?></td>
+                                <td><?=$fetch1['preparedby']?></td>
+                                <td><?=$fetch1['reviewedby']?></td>
+                                <td><?=$fetch1['documenttype']?></td>
+                                <td><?=$fetch1['status']?></td>
+                                <td><a href="" class="btn btn-outline-primary">VIEW</a></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        
+
+        </div>
 
 
 
@@ -112,10 +121,13 @@ $result1 = mysqli_query($connection,$sql1);
         <style>
             .container {
                 margin-top: 80px;
-                margin-bottom: 50px;
+                margin-bottom: 10px;
             }
             .greeting {
                 margin-left: 30px;
+            }
+            .body-bg {
+                background-color:#E0E0E0E0;
             }
         </style>
    

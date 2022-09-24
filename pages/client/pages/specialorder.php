@@ -30,7 +30,7 @@ $result2 = mysqli_query($connection,$sql2);
         <link href="../../../src/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
-    <body>
+    <body class="body-bg">
 
         <!-- navbar -->
         <nav class="navbar fixed-top" style="background-color: #69F0AE;">
@@ -51,112 +51,160 @@ $result2 = mysqli_query($connection,$sql2);
 
         <div class="container">
             
-            <h1>SPECIAL ORDER</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h1>SPECIAL ORDER</h1>
+                </div>
+            </div>
             <br>
 
             <form method="post" enctype="multipart/form-data" action="../../../modules/clientSubmitSO.php">
 
-                <div class="mb-3">
-                    <label class="form-label">HEI</label>
-                    <select class="form-select" aria-label="Default select example" name="schoolID" readonly>
-                        <option value="<?= $fetchschool['schoolid']?>" selected><?= $fetchschool['schooldesc']?></option>
-                    </select>
-                </div>
+                <div class="card">
 
-                <div class="mb-3">
-                    <label class="form-label">School Address</label>
-                    <input type="text" class="form-control" name="schoolcity" value="<?= $fetchschool['schoolcity']?>" readonly required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">First Name</label>
-                    <input type="text" class="form-control" name="firstname" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Middle Name</label>
-                    <input type="text" class="form-control" name="middlename" required>
-                </div>
-                
-                <div class="mb-3">
-                    <label class="form-label">Last Name</label>
-                    <input type="text" class="form-control" name="lastname" required>
-                </div>
-                
-                <div class="mb-3">
-                    <label class="form-label">Course</label>
-                    <select class="form-select" aria-label="Default select example" name="course" >
+                    <div class="card-body">
                         
-                        <?php while($fetch2 = mysqli_fetch_assoc($result2)) { ?>
-                            <option value="<?= $fetch2['courseid']?>"><?= $fetch2['coursedesc']?></option>
-                        <?php } ?>
-            
-                    </select>
-                </div>
+                        <div class="card">
+                            <div class="card-header">SCHOOL INFORMATION</div>
+                            <div class="card-body">
 
-                <div class="mb-3">
-                    <label class="form-label">Type of Application</label>
-                    <input type="text" class="form-control" name="typeofapplication" value="Special Order" readonly required>
-                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">HEI</label>
+                                    <select class="form-select" aria-label="Default select example" name="schoolID" readonly>
+                                        <option value="<?= $fetchschool['schoolid']?>" selected><?= $fetchschool['schooldesc']?></option>
+                                    </select>
+                                </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Mode of Study</label>
-                    <input type="text" class="form-control" name="modeofstudy" value="Conventional" readonly required>
-                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">School Address</label>
+                                    <input type="text" class="form-control" name="schoolcity" value="<?= $fetchschool['schoolcity']?>" readonly required>
+                                </div>
 
-                <div class="mb-3">
-                    <label class="form-label">SO No.</label>
-                    <input type="text" class="form-control" name="SOnumber">
-                </div>
+                            </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Date of Graduation</label>
-                    <input type="text" class="form-control" name="dateofgraduation" required>
-                </div>
+                        </div>
+                        
+                        <br>
 
-                <div class="mb-3">
-                    <label class="form-label">Date Started</label>
-                    <input type="text" class="form-control" name="datestarted" required>
-                </div>
+                        <div class="card">
+                            <div class="card-header">STUDENT INFORMATION</div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" name="firstname" required>
+                                </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Date Ended</label>
-                    <input type="text" class="form-control" name="dateended" required>
-                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Middle Name</label>
+                                    <input type="text" class="form-control" name="middlename" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" name="lastname" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Course</label>
+                                    <select class="form-select" aria-label="Default select example" name="course" >
+                                        
+                                        <?php while($fetch2 = mysqli_fetch_assoc($result2)) { ?>
+                                            <option value="<?= $fetch2['courseid']?>"><?= $fetch2['coursedesc']?></option>
+                                        <?php } ?>
+                            
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Date of Graduation</label>
+                                    <input type="text" class="form-control" name="dateofgraduation" required>
+                                </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Application Type</label>
-                    <select class="form-select" aria-label="Default select example" name="applicationtype">
-                        <option value="Local">Local</option>
-                        <option value="DFA">DFA</option>
-                    </select>
-                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Date Started</label>
+                                    <input type="text" class="form-control" name="datestarted" required>
+                                </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Letter of Request</label>
-                    <input class="form-control" type="file" name="requestletter" accept=".pdf,.jpg,.jpeg,.png" required>
-                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Date Ended</label>
+                                    <input type="text" class="form-control" name="dateended" required>
+                                </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Indorsement Letter</label>
-                    <input class="form-control" type="file" name="indorsementletter" accept=".pdf,.jpg,.jpeg,.png" required>
-                </div>
+                            </div>
+                        </div>
+                        
+                        <br>
 
-                <div class="mb-3">
-                    <label class="form-label">Transcript of Record</label>
-                    <input class="form-control" type="file" name="tor" accept=".pdf,.jpg,.jpeg,.png" required>
-                </div>
+                        <div class="card">
+                            <div class="card-header">FILES</div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Letter of Request</label>
+                                    <input class="form-control" type="file" name="requestletter" accept=".pdf,.jpg,.jpeg,.png" required>
+                                </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Diploma</label>
-                    <input class="form-control" type="file" name="diploma" accept=".pdf,.jpg,.jpeg,.png" required>
+                                <div class="mb-3">
+                                    <label class="form-label">Indorsement Letter</label>
+                                    <input class="form-control" type="file" name="indorsementletter" accept=".pdf,.jpg,.jpeg,.png" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Transcript of Record</label>
+                                    <input class="form-control" type="file" name="tor" accept=".pdf,.jpg,.jpeg,.png" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Diploma</label>
+                                    <input class="form-control" type="file" name="diploma" accept=".pdf,.jpg,.jpeg,.png" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="card">
+                            <div class="card-header">DOCUMENT INFORMATION</div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Type of Application</label>
+                                    <input type="text" class="form-control" name="typeofapplication" value="Special Order" readonly required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Mode of Study</label>
+                                    <input type="text" class="form-control" name="modeofstudy" value="Conventional" readonly required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">SO No.</label>
+                                    <input type="text" class="form-control" name="SOnumber">
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label class="form-label">Application Type</label>
+                                    <select class="form-select" aria-label="Default select example" name="applicationtype">
+                                        <option value="Local">Local</option>
+                                        <option value="DFA">DFA</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <hr>
+                        
+                        <marquee><p style="color:red;">Please take time to review before submitting it for faster document processing.</p></marquee>
+                        <div class="row">
+                            <div class="col-3"></div>
+                            <div class="col">
+                                <input type="submit" name="submit" value="SUBMIT" class="btn btn-outline-success col-4">   
+                                <a href="../index.php" class="btn btn-outline-danger col-4">Cancel</a>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
-                
-                <br>
-                <hr>
-                <p style="color:red;">Please review further to avoid errors and issues.</p>
-                <input type="submit" name="submit" value="SUBMIT" class="btn btn-outline-success">   
-                <a href="../index.php" class="btn btn-outline-danger">Cancel</a>
 
             </form>
 
@@ -170,6 +218,9 @@ $result2 = mysqli_query($connection,$sql2);
             .container {
                 margin-top: 80px;
                 margin-bottom: 100px;
+            }
+            .body-bg {
+                background-color:#E0E0E0E0;
             }
         </style>
    

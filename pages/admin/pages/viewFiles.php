@@ -28,7 +28,7 @@ $result = mysqli_query($connection,$sql);
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     </head>
 
-    <body>
+    <body class="body-bg">
 
         <!-- navbar -->
         <nav class="navbar fixed-top" style="background-color: #FDD835;">
@@ -48,19 +48,22 @@ $result = mysqli_query($connection,$sql);
         </nav>
 
         <div class="container">
-            <form method='POST' action="../../../modules/admin-viewfiles-route.php">
-                <div class="row">
-                    <div class="col-1"></div>
-                    <div class="mb-3 col-8">
-                        <label class="form-label">SEARCH: </label>
-                        <input type="text" class="form-control" name="search">
-                    </div>
-                    <div class="col-2 mt-4">
-                        <input type="submit" class="btn btn-outline-primary" value="SEARCH">
-                        <a href="../index.php" class="btn btn-outline-danger">BACK</a>
-                    </div>
+            <div class="card">
+                <div class="card-body">
+                    <form method='POST' action="../../../modules/admin-viewfiles-route.php">
+                        <div class="row">
+                            <div class="col-2 mt-2"><label class="form-label"><h1>SEARCH:</h1></label></div>
+                            <div class="col-8 mt-3">
+                                <input type="text" class="form-control" name="search">
+                            </div>
+                            <div class="col-2 mt-3">
+                                <input type="submit" class="btn btn-outline-primary" value="SEARCH">
+                                <a href="../index.php" class="btn btn-outline-danger">BACK</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
 
         <div class="container-fluid">
@@ -88,7 +91,7 @@ $result = mysqli_query($connection,$sql);
                         </thead>
                         <tbody>
                             <?php while($fetch = mysqli_fetch_assoc($result)) { ?>
-                                <tr <?php if ($fetch['status'] == 'Pending') {echo "style='background-color:#FFB74D;'";} elseif ($fetch['status'] == 'Processing') {echo "style='background-color:#A5D6A7;'";} elseif ($fetch['status'] == 'Rejected') {echo "style='background-color:#FFAB91;'";}?>>
+                                <tr <?php if ($fetch['status'] == 'Pending') {echo "style='background-color:#FFE0B2;'";} elseif ($fetch['status'] == 'Processing') {echo "style='background-color:#C8E6C9;'";} elseif ($fetch['status'] == 'Rejected') {echo "style='background-color:#FFCDD2;'";}?>>
                                     <td><?=$fetch['id']?></td>
                                     <td><?=$fetch['firstname']?></td>
                                     <td><?=$fetch['middlename']?></td>
@@ -119,6 +122,9 @@ $result = mysqli_query($connection,$sql);
             .container {
                 margin-top: 80px;
                 margin-bottom: 5px;
+            }
+            .body-bg {
+                background-color:#E0E0E0;
             }
         </style>
    
