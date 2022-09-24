@@ -40,10 +40,10 @@ $fetch4 = mysqli_fetch_assoc($result4);
         <link href="../../src/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
-    <body>
+    <body class="color-this">
 
         <!-- navbar -->
-        <nav class="navbar fixed-top" style="background-color: #69F0AE;">
+        <nav class="navbar fixed-top" style="background-color: #FFFFFF;">
             <div class="container-fluid">
                 <a class="navbar-brand">CHEDROXI-CAV</a>
                 
@@ -61,7 +61,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
         
         <div class="container">
 
-            <div class="card text-bg-success">
+            <div class="card">
                 <div class="card-header"><?=$school . ' - School Registrar'?></div>
                 <div class="card-body">
                     <div class="row">
@@ -77,7 +77,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                     
                     <hr>
 
-                    <div class="card text-bg-dark">
+                    <div class="card">
                         <div class="card-header">Applications</div>
                         <div class="card-body">
                             <div class="row">
@@ -103,7 +103,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                     <div class="row mt-4">
                         
                         <div class="col-6">
-                            <div class="card text-bg-dark">
+                            <div class="card">
                                 <div class="card-header">SUBMIT APPLICATION</div>
                                 <div class="card-body">
                                     <form method="post" action="../../modules/client-applicationtype-route.php">
@@ -128,7 +128,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                         </div>
 
                         <div class="col-6">
-                            <div class="card text-bg-dark">
+                            <div class="card">
                                 <div class="card-header">SCHOOL COURSES</div>
                                 <div class="card-body">
                                     <p>view courses.</p>
@@ -160,6 +160,9 @@ $fetch4 = mysqli_fetch_assoc($result4);
             }
             .img-profile {
                 border-radius:50%;
+            }
+            .color-this{
+                background-color: #E0E0E0;
             }
         </style>
    
