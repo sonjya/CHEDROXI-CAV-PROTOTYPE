@@ -63,7 +63,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
         </nav>
 
         <div class="container">
-            <div class="card">
+            <div class="card text-bg-warning">
                 <div class="card-header">
                     CHEDROXI - CAV
                 </div>
@@ -78,7 +78,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                         </div>
                     </div>
                     <hr>
-                    <div class="card">
+                    <div class="card text-bg-dark">
                         <div class="card-header">
                             APPLICATIONS
                         </div>
@@ -115,7 +115,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                                             
                     <div class="row">
                         <div class="col-6">
-                            <div class="card">
+                            <div class="card text-bg-dark">
                                 <div class="card-header">(HEI) HIGHER EDUCATIONAL INSTITUTION</div>
                                 <div class="card-body">
                                     <p>Add, delete, or edit school information.</p>
@@ -125,7 +125,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                         </div>
 
                         <div class="col-6">
-                            <div class="card">
+                            <div class="card text-bg-dark">
                                 <div class="card-header">SYSTEM USERS</div>
                                 <div class="card-body">
                                     <p>View this to view users of the system</p>
@@ -140,7 +140,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
 
                     <div class="row">
                         <div class="col-6">
-                            <div class="card">
+                            <div class="card text-bg-dark">
                                 <div class="card-header">COMMISSIONERS</div>
                                 <div class="card-body">
                                     <p>View this to view users of the system</p>
@@ -150,7 +150,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                         </div>
 
                         <div class="col-6">
-                            <div class="card">
+                            <div class="card text-bg-dark">
                                 <div class="card-header">PRICES</div>
                                 <div class="card-body">
                                     <p>View this to view users of the system</p>
@@ -177,6 +177,9 @@ $fetch4 = mysqli_fetch_assoc($result4);
             .img-user {
                 border-radius: 50%;
             }
+            /* .text-bg-ched {
+                background-color:#FDD835;
+            } */
         </style>
    
 
