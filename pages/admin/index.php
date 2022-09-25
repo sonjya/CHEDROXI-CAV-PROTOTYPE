@@ -41,6 +41,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
     <head>
         <title>CHEDROXI-CAV</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" integrity="sha512-fXnjLwoVZ01NUqS/7G5kAnhXNXat6v7e3M9PhoMHOTARUMCaf5qNO84r5x9AFf5HDzm3rEZD8sb/n6dZ19SzFA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
 
     <body class="body-bg">
@@ -51,11 +52,11 @@ $fetch4 = mysqli_fetch_assoc($result4);
                 <a class="navbar-brand">CHEDROXI-CAV</a>
                 
                 <li class="nav-item dropdown d-flex">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= $user ?></a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="mdi mdi-account"></span> <?= $user ?></a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../shared/viewProfile.php">Profile settings</a></li>
+                            <li><a class="dropdown-item" href="../shared/viewProfile.php"><span class="mdi mdi-account-edit"></span> Profile settings</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="../../modules/logout.php" style="color: red;">LOGOUT</a></li>
+                            <li><a class="dropdown-item" href="../../modules/logout.php" style="color: red;"><span class="mdi mdi-logout-variant"></span> LOGOUT</a></li>
                         </ul>
                 </li>
 
@@ -65,7 +66,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
         <div class="container">
             <div class="card text-bg-warning">
                 <div class="card-header">
-                    CHEDROXI - CAV
+                    CHEDROXI - CAV 
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -75,6 +76,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                         <div class="col-6 mt-4">
                             <h1>Welcome <?=$user?></h1>
                             <h5><?=$role?></h5>
+                            <a href="../../modules/admin-viewannouncements-route.php" class="btn btn-outline-primary"><span class="mdi mdi-bullhorn-variant-outline"></span> Announcement</a>
                         </div>
                     </div>
                     <hr>

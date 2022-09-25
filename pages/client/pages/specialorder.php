@@ -64,8 +64,8 @@ $result2 = mysqli_query($connection,$sql2);
 
                     <div class="card-body">
                         
-                        <div class="card">
-                            <div class="card-header">SCHOOL INFORMATION</div>
+                        <div class="card border-primary">
+                            <div class="card-header text-bg-primary">SCHOOL INFORMATION</div>
                             <div class="card-body">
 
                                 <div class="mb-3">
@@ -86,8 +86,8 @@ $result2 = mysqli_query($connection,$sql2);
                         
                         <br>
 
-                        <div class="card">
-                            <div class="card-header">STUDENT INFORMATION</div>
+                        <div class="card border-primary">
+                            <div class="card-header text-bg-primary">STUDENT INFORMATION</div>
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label class="form-label">First Name</label>
@@ -134,8 +134,8 @@ $result2 = mysqli_query($connection,$sql2);
                         
                         <br>
 
-                        <div class="card">
-                            <div class="card-header">FILES</div>
+                        <div class="card border-primary">
+                            <div class="card-header text-bg-primary">FILES</div>
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label class="form-label">Letter of Request</label>
@@ -161,8 +161,8 @@ $result2 = mysqli_query($connection,$sql2);
 
                         <br>
 
-                        <div class="card">
-                            <div class="card-header">DOCUMENT INFORMATION</div>
+                        <div class="card border-primary">
+                            <div class="card-header text-bg-primary">DOCUMENT INFORMATION</div>
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label class="form-label">Type of Application</label>
@@ -193,7 +193,7 @@ $result2 = mysqli_query($connection,$sql2);
                         <br>
                         <hr>
                         
-                        <marquee><p style="color:red;">Please take time to review before submitting it for faster document processing.</p></marquee>
+                        <p style="color:red;font-style:italic;text-align:center;">* Sir/Ma'am <?=$fetch['lastname']?>, please take time to review before submitting it to avoid errors for smoother and faster process.*</p>
                         <div class="row">
                             <div class="col-3"></div>
                             <div class="col">

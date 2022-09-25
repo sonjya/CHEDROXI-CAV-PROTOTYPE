@@ -31,6 +31,10 @@ $sql4 = "select count(*) as total from tbl_process a inner join tbl_user_school 
 $result4 = mysqli_query($connection,$sql4);
 $fetch4 = mysqli_fetch_assoc($result4);
 
+//announcements
+$qry = "select * from tbl_announcements where active='yes'";
+$res = mysqli_query($connection,$qry);
+
 ?>
 
 <!doctype html>
@@ -141,9 +145,24 @@ $fetch4 = mysqli_fetch_assoc($result4);
 
                 </div>
             </div>
+            
+            <br>
 
+            <div class="card text-bg-success">
+                <div class="card-body">
+                    <h1>ANNOUNCEMENTS</h1>
+                        <?php while($fet = mysqli_fetch_assoc($res)) { ?>
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <h6 style="color:red;font-style:italic">* <?=$fet['date']?> - <?=$fet['description']?></h6>
+                                </div>
+                            </div>
+                        <?php } ?>
+                </div>
+            </div>
 
-        </div>
+        <!-- container -->
+        </div> 
 
          
 

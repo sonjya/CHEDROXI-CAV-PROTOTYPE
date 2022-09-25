@@ -16,8 +16,8 @@ $role = $fetch['roleDesc'];
 
 $search = $_GET['search'];
 
-//getting data from tbl_commissioners
-$sql1 = "select * from tbl_commissioners where fullname like '%$search%' or position like '%$search%'";
+//getting all data fromt tbl_announcements;
+$sql1 = "select * from tbl_announcements where description like '%$search%' or date like '%$search%' order by id desc";
 $result1 = mysqli_query($connection,$sql1);
 
 ?>
@@ -50,9 +50,9 @@ $result1 = mysqli_query($connection,$sql1);
 
         <div class="container">
             <div class="card">
-                <div class="card-header">COMMISSIONERS</div>
+                <div class="card-header">ANNOUNCEMENTS</div>
                 <div class="card-body">
-                    <form method='post' action="../../../modules/admin-viewcommissioners-route.php">
+                    <form method='post' action="../../../modules/admin-viewannouncements-route.php">
                         <div class="row">
                             <div class="col-2"></div>
                             <div class="col-6"><input type="text" name="search" class="form-control"></div>
@@ -64,8 +64,8 @@ $result1 = mysqli_query($connection,$sql1);
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>FULL NAME</th>
-                                <th>POSITION</th>
+                                <th>DESCRIPTION</th>
+                                <th class="col-1">DATE</th>
                                 <th>ACTIVE</th>
                                 <th>ACTION</th>
                             </tr>
@@ -73,20 +73,28 @@ $result1 = mysqli_query($connection,$sql1);
                         <tbody>
                             <?php while($fetch1 = mysqli_fetch_assoc($result1)) {?>
                                 <tr <?php if($fetch1['active'] == 'yes') { echo "style='background-color:#C8E6C9;'";} elseif ($fetch1['active'] == 'no') {echo "style='background-color:#FFCDD2;'";}?>>
-                                    <td><?=$fetch1['commissionerID']?></td>
-                                    <td><?=$fetch1['fullName']?></td>
-                                    <td><?=$fetch1['position']?></td>
+                                    <td><?=$fetch1['ID']?></td>
+                                    <td><?=$fetch1['description']?></td>
+                                    <td><?=$fetch1['date']?></td>
                                     <td><?=$fetch1['active']?></td>
-                                    <td><a href="viewCommissionerDetail.php?id=<?=$fetch1['commissionerID']?>" class="btn btn-outline-primary">VIEW</a></td>
+                                    <?php if($fetch1['active']=='yes') { ?>
+                                        <td><a href="../../../modules/updateAnnouncementDown.php?id=<?=$fetch1['ID']?>" class="btn btn-outline-danger">DOWN</a></td>
+                                    <?php }elseif($fetch1['active']=='no') { ?>
+                                        <td><a href="../../../modules/updateAnnouncementUp.php?id=<?=$fetch1['ID']?>" class="btn btn-outline-success">UP</a></td>
+                                    <?php } ?>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
-                    <div class="row">
-                        <div class="col-4"></div>
-                        <a href="addCommissioner.php" class="col-4 btn btn-outline-warning">ADD ANOTHER COMMISSIONER</a>
-                    </div>
-                </div>
+                    <form method="post" action="../../../modules/addAnnouncement.php">
+                        <div class="row">
+                            <div class="col-8">
+                                <input type="text" class="form-control" name="announcementtext" required>
+                            </div>
+                                <input type="submit" class="col-4 btn btn-outline-warning" value="POST NEW ANNOUNCEMENT">
+                            </div>
+                        </div>
+                    </form>
             </div>
         </div>
 
@@ -105,8 +113,8 @@ $result1 = mysqli_query($connection,$sql1);
             margin-bottom: 5px;
         }
         .body-bg {
-            background-color:#E0E0E0E0;
-        }
+                background-color:#E0E0E0;
+            }
     </style>
 
 

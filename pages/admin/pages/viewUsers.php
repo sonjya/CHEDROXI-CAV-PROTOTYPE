@@ -69,6 +69,7 @@ $result1 = mysqli_query($connection,$sql1);
                                 <th>USERNAME</th>
                                 <th>ROLE</th>
                                 <th>ACTIVE</th>
+                                <th>ACTION</th>
                             </tr>
                         </thead>
                         <tbody>

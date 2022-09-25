@@ -49,57 +49,62 @@ $result2 = mysqli_query($connection,$sql2);
 
         <div class="container">
                 
-            <form method="post" action="../../../modules/client-viewcourses-route.php">
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-6">
-                        <input type="text" class="form-control" name="search">
-                    </div>
-                    <div class="col-3">
-                        <input type="submit" class="btn btn-outline-primary" value="SEARCH"> <a href="../index.php" class="btn btn-outline-danger">BACK</a>
-                    </div>
-                </div>
-            </form>
-
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Course Title</th>
-                        <th>Active</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <?php while($fetch2=mysqli_fetch_assoc($result2)) { $schoolid=$fetch2['schoolid'] ?>
-                        <tr <?php if($fetch2['active']=='yes') {echo "style='background-color:#C8E6C9;'";} else {echo "style='background-color:#FFCDD2;'";} ?>>
-                            <td><?=$fetch2['courseid']?></td>
-                            <td><?=$fetch2['coursedesc']?></td>
-                            <td><?=$fetch2['active']?></td>
-                            <td><a href="editCourse.php?id=<?=$fetch2['courseid']?>" class="btn btn-outline-primary">EDIT</a></td>
-                        </tr>
-                    <?php } ?>
-                    
-                </tbody>
-            </table>
-
-            <hr>
-                <form method="post" action="../../../modules/addCourse.php">
+            <div class="card">
+                <div class="card-header">COURSES</div>
+                <div class="card-body">
+                    <form method="post" action="../../../modules/client-viewcourses-route.php">
                     <div class="row">
-                        <div class="col-2">
-                            <h3>ADD COURSE:</h3>
-                        </div>
+                        <div class="col-2"></div>
                         <div class="col-6">
-                            <input type="text" class="form-control" name="coursedesc" required>
+                            <input type="text" class="form-control" name="search">
                         </div>
                         <div class="col-3">
-                            <input type="hidden" value="<?=$schoolid?>" name="schoolid">
-                            <input type="submit" class="btn btn-outline-primary" value="ADD">
+                            <input type="submit" class="btn btn-outline-primary" value="SEARCH"> <a href="../index.php" class="btn btn-outline-danger">BACK</a>
                         </div>
                     </div>
                 </form>
+
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Course Title</th>
+                            <th>Active</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <?php while($fetch2=mysqli_fetch_assoc($result2)) { $schoolid=$fetch2['schoolid'] ?>
+                            <tr <?php if($fetch2['active']=='yes') {echo "style='background-color:#C8E6C9;'";} else {echo "style='background-color:#FFCDD2;'";} ?>>
+                                <td><?=$fetch2['courseid']?></td>
+                                <td><?=$fetch2['coursedesc']?></td>
+                                <td><?=$fetch2['active']?></td>
+                                <td><a href="editCourse.php?id=<?=$fetch2['courseid']?>" class="btn btn-outline-primary">EDIT</a></td>
+                            </tr>
+                        <?php } ?>
+                        
+                    </tbody>
+                </table>
+
+                <hr>
+                    <form method="post" action="../../../modules/addCourse.php">
+                        <div class="row">
+                            <div class="col-2">
+                                <h3>ADD COURSE:</h3>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="coursedesc" required>
+                            </div>
+                            <div class="col-3">
+                                <input type="hidden" value="<?=$schoolid?>" name="schoolid">
+                                <input type="submit" class="btn btn-outline-primary" value="ADD">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
         </div>
 

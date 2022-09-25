@@ -9,13 +9,12 @@ session_start();
         <link href="src/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
-    <body class="body-bg bg-image">
-        <div class="container" style="width: 30rem;">
-                <div class="col-12">
-                    <div class="card">
-                        <img src="images/logo.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">LOGIN</h5>
+    <body class="bg-image">
+        <div class="container" style="width:25rem;">
+                <div class="card">
+                    <img src="images/logo.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">LOGIN</h5>
                             <form method="POST" action="modules/auth.php">
                                 <div class="mb-3">
                                     <label for="username" class="form-label">USERNAME</label>
@@ -35,7 +34,6 @@ session_start();
                                     <input type="submit" class="btn btn-outline-success col-6" value="LOGIN">
                                 </div>
                             </form>
-                        </div>
                     </div>
                 </div>
         </div>
@@ -48,9 +46,6 @@ session_start();
         <style>
             .container {
                 margin-top: 100px;
-            }
-            .body-bg {
-                background-color:#E0E0E0;
             }
             .bg-image {
             background-image: url("images/chedroxi.png");

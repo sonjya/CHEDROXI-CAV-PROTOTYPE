@@ -20,11 +20,11 @@ $fetch = mysqli_fetch_assoc($result);
         <link href="../../src/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
-    <body>
+    <body class="body-bg">
 
         <div class="container">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header text-bg-primary">
                     PROFILE SETTINGS
                 </div>
                 <div class="card-body">
@@ -80,6 +80,9 @@ $fetch = mysqli_fetch_assoc($result);
             }
             .greeting {
                 margin-left: 30px;
+            }
+            .body-bg {
+                background-color:#E0E0E0;
             }
         </style>
    

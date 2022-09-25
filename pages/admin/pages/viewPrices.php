@@ -67,6 +67,7 @@ $result1 = mysqli_query($connection,$sql1);
                                 <th>ITEM DESCRIPTION</th>
                                 <th>PRICE</th>
                                 <th>ACTIVE</th>
+                                <th>ACTION</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -64,10 +64,10 @@ $result1 = mysqli_query($connection,$sql1);
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>School Name</th>
-                                <th>City</th>
-                                <th>Active</th>
-                                <th>Action</th>
+                                <th>SCHOOL NAME</th>
+                                <th>CITY</th>
+                                <th>ACTIVE</th>
+                                <th>ACTION</th>
                             </tr>
                         </thead>
                         <tbody>
