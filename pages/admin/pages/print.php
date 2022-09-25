@@ -8,11 +8,18 @@ $sql = "select a.id,schooldesc,schoolcity,firstname,middlename,lastname,coursede
 $result = mysqli_query($connection,$sql);
 $fetch = mysqli_fetch_assoc($result);
 
+//getting current date
 $sql1 = "select date_format(now(),'%M %d,%Y') as now,year(now()) as year,date_format(now(),'%m/%d/%Y') as rel";
 $result1 = mysqli_query($connection,$sql1);
 $fetch1 = mysqli_fetch_assoc($result1);
 
 $print = $_GET['print'];
+
+//getting prices from tbl_prices
+$sql2 = "select (select price from tbl_prices where itemdesc='Certification Fee') as certfee,(select price from tbl_prices where itemdesc='Doc Stamp Tax') as doctax";
+$result2 = mysqli_query($connection,$sql2);
+$fetch2 = mysqli_fetch_assoc($result2);
+
 
 ?>
 
@@ -31,7 +38,7 @@ $print = $_GET['print'];
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col-8">
-                    CAV (CHEDROXI) No. <strong><u>21227</u></strong>
+                    CAV (CHEDROXI) No. <strong>21227</strong>
                 </div>
                 <div class="col"><?=$fetch1['now']?></div>
             </div>
@@ -65,7 +72,7 @@ $print = $_GET['print'];
                     Name of Student
                 </div>
                 <div class="col">
-                    <strong>: <?php if($fetch['middlename'] != "") {?> <?=$fetch['firstname'] . ' ' . substr($fetch['middlename'],0,1) . '. ' . $fetch['lastname']?></strong>" <?php } else { ?> <?=$fetch['firstname'] . ' ' . $fetch['lastname']?></strong> <?php } ?>
+                    <strong>: <?php if($fetch['middlename'] != "") {?> <?=$fetch['firstname'] . ' ' . substr($fetch['middlename'],0,1) . '. ' . $fetch['lastname']?></strong> <?php } else { ?> <?=$fetch['firstname'] . ' ' . $fetch['lastname']?></strong> <?php } ?>
                 </div>
             </div>
             <div class="row">
@@ -141,7 +148,7 @@ $print = $_GET['print'];
                     <strong>: <?=$fetch['schoolcity']?></strong>
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-5">
                 <div class="col-2"></div>
                 <div class="col">
                     This is to fuither certify that the above institution is a duly authorized private higher education institution (HEI)
@@ -223,14 +230,14 @@ $print = $_GET['print'];
                 <div class="col-1"></div>
                 <div class="col-2">Certification Fee</div>
                 <div class="col-3">
-                    : Php 80.00
+                    : Php <?=$fetch2['certfee']?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col-2">Doc Stamp Tax</div>
                 <div class="col-3">
-                    : Php 30.00
+                    : Php <?=$fetch2['doctax']?>
                 </div>
             </div>
             <div class="row">

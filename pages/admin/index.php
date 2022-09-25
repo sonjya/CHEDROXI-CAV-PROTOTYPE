@@ -34,6 +34,11 @@ $sql4 = "select count(id) as total from tbl_process where status='rejected' and 
 $result4 = mysqli_query($connection,$sql4);
 $fetch4 = mysqli_fetch_assoc($result4);
 
+//counting validated
+$sql5 = "select count(id) as total from tbl_process where status='validated' and active='yes'";
+$result5 = mysqli_query($connection,$sql5);
+$fetch5 = mysqli_fetch_assoc($result5);
+
 ?>
 
 <!doctype html>
@@ -86,21 +91,26 @@ $fetch4 = mysqli_fetch_assoc($result4);
                         </div>
                         <div class="body">
                             <div class="row m-3 col-12">
+                                <div class="col-1"></div>
                                 <div class="col-3">
                                     <h6>ALL FILES</h6>
                                     <h1><?=$fetch1['total']?></h1>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2" style='color:orange;'>
                                     <h6>PENDING</h6>
                                     <h1><?=$fetch2['total']?></h1>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2" style='color:#00E676;'>
                                     <h6>PROCESSING</h6>
                                     <h1><?=$fetch3['total']?></h1>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2" style='color:red;'>
                                     <h6>REJECTED</h6>
                                     <h1><?=$fetch4['total']?></h1> 
+                                </div>
+                                <div class="col-2">
+                                    <h6>VALIDATED</h6>
+                                    <h1><?=$fetch5['total']?></h1> 
                                 </div>
                             </div>
                             <div class="row">

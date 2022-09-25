@@ -32,7 +32,7 @@ $result4 = mysqli_query($connection,$sql4);
 $fetch4 = mysqli_fetch_assoc($result4);
 
 //announcements
-$qry = "select * from tbl_announcements where active='yes' order by date desc";
+$qry = "select * from tbl_announcements where active='yes' order by id desc";
 $res = mysqli_query($connection,$qry);
 
 ?>
@@ -85,12 +85,13 @@ $res = mysqli_query($connection,$qry);
                         <div class="card-header">Applications</div>
                         <div class="card-body">
                             <div class="row">
+                                <div class="col-1"></div>
                                     <div class="col-3">
                                         <h6>All Files</h6>
                                         <h1><?=$fetch4['total']?></h1>
                                     </div>
                                 <?php while($fetch3=mysqli_fetch_assoc($result3)) {?>
-                                    <div class="col-3" <?php if($fetch3['status'] == 'Pending') {echo "style='color:orange;'";} elseif ($fetch3['status'] == 'Processing') {echo "style='color:#00E676;'";} elseif ($fetch3['status'] == 'Rejected') {echo "style='color:red;'";} ?>>
+                                    <div class="col-2" <?php if($fetch3['status'] == 'Pending') {echo "style='color:orange;'";} elseif ($fetch3['status'] == 'Processing') {echo "style='color:#00E676;'";} elseif ($fetch3['status'] == 'Rejected') {echo "style='color:red;'";} ?>>
                                         <h6><?=$fetch3['status']?></h6>
                                         <h1><?=$fetch3['total']?></h1>
                                     </div>

@@ -166,10 +166,15 @@ $result2 = mysqli_query($connection,$sql2);
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-4">
-                                    <h6>OR NUMBER: </h6>
-                                    <input type="number" class="form-control" name="ornumber" value="<?=$fetch1['ornumber']?>" required>
-                                </div>
+
+                                <?php if($fetch1['status'] == 'Rejected') { ?>
+
+                                <?php } else { ?>
+                                    <div class="col-4">
+                                        <h6>OR NUMBER: </h6>
+                                        <input type="number" class="form-control" name="ornumber" value="<?=$fetch1['ornumber']?>" required>
+                                    </div>
+                                <?php } ?>
 
                                 <?php if($fetch1['status'] == 'Pending') {?>
                                     <div class="col-4">
@@ -180,7 +185,7 @@ $result2 = mysqli_query($connection,$sql2);
                                             <?php } ?>
                                         </select>
                                     </div>
-                                <?php } elseif ($fetch1['status'] == 'Processing') {
+                                <?php } elseif ($fetch1['status'] == 'Processing' || $fetch1['status'] == 'Validated' ) {
                                     $qry = "select fullname from tbl_commissioners a inner join tbl_process b where a.commissionerid=b.commissionerid and b.id='$id' order by a.commissionerid desc limit 1";
                                     $res = mysqli_query($connection,$qry);
                                     $fet = mysqli_fetch_assoc($res);
@@ -194,13 +199,12 @@ $result2 = mysqli_query($connection,$sql2);
                                 <?php if ($fetch1['status'] == 'Pending') { ?>
                                     <div class="col-4 mt-4">
                                         <input type="submit" class="btn btn-outline-success col-3" value="ACCEPT">
-                                        <a href="" class="btn btn-outline-warning col-3">REJECT</a>
+                                        <a href="../../../modules/rejectFile.php?user=<?=$user?>&id=<?=$id?>" class="btn btn-outline-warning col-3">REJECT</a>
                                         <a href="../../../modules/admin-viewfiles-route.php" class="btn btn-outline-danger col-3">BACK</a>
                                     </div>
                                 <?php } elseif ($fetch1['status'] == 'Processing') { ?>
                                     <div class="col-4 mt-4">
                                         <a href="../../../modules/validateFile.php?validator=<?=$user?>&id=<?=$id?>" class="btn btn-outline-success col-3 <?php if($fetch1['preparedby'] == $user) {echo "disabled";}?>">VALIDATE</a>
-                                        <!-- <a href="print.php?print=yes&id=<?=$fetch1['id']?>" target="blank" class="btn btn-outline-primary col-3">PRINT</a> -->
                                         <a href="../../../modules/admin-viewfiles-route.php" class="btn btn-outline-danger col-3">BACK</a>
                                     </div>
                                 <?php } elseif ($fetch1['status'] == 'Validated') { ?>
@@ -208,7 +212,11 @@ $result2 = mysqli_query($connection,$sql2);
                                         <a href="print.php?print=yes&id=<?=$fetch1['id']?>" target="blank" class="btn btn-outline-primary col-3">PRINT</a>
                                         <a href="../../../modules/admin-viewfiles-route.php" class="btn btn-outline-danger col-3">BACK</a>
                                     </div>
-                                <?php }?>    
+                                <?php } else { ?>
+                                     <div class="col-4 mt-4">
+                                        <a href="../../../modules/admin-viewfiles-route.php" class="btn btn-outline-danger col-3">BACK</a>
+                                     </div>   
+                                <?php } ?>
 
                             </div>
                         </div>
