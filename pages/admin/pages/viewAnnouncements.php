@@ -88,10 +88,11 @@ $result1 = mysqli_query($connection,$sql1);
                     </table>
                     <form method="post" action="../../../modules/addAnnouncement.php">
                         <div class="row">
+                            <div class="col-1"></div>
                             <div class="col-8">
                                 <input type="text" class="form-control" name="announcementtext" required>
                             </div>
-                                <input type="submit" class="col-4 btn btn-outline-warning" value="POST NEW ANNOUNCEMENT">
+                                <input type="submit" class="col-2 btn btn-outline-warning" value="POST ANNOUNCEMENT">
                             </div>
                         </div>
                     </form>

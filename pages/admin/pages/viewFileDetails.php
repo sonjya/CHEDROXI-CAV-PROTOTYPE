@@ -199,11 +199,16 @@ $result2 = mysqli_query($connection,$sql2);
                                     </div>
                                 <?php } elseif ($fetch1['status'] == 'Processing') { ?>
                                     <div class="col-4 mt-4">
-                                        <a href="" class="btn btn-outline-success col-3 <?php if($fetch1['preparedby'] == $user) {echo "disabled";}?>">VALIDATE</a>
+                                        <a href="../../../modules/validateFile.php?validator=<?=$user?>&id=<?=$id?>" class="btn btn-outline-success col-3 <?php if($fetch1['preparedby'] == $user) {echo "disabled";}?>">VALIDATE</a>
+                                        <!-- <a href="print.php?print=yes&id=<?=$fetch1['id']?>" target="blank" class="btn btn-outline-primary col-3">PRINT</a> -->
+                                        <a href="../../../modules/admin-viewfiles-route.php" class="btn btn-outline-danger col-3">BACK</a>
+                                    </div>
+                                <?php } elseif ($fetch1['status'] == 'Validated') { ?>
+                                    <div class="col-4 mt-4">
                                         <a href="print.php?print=yes&id=<?=$fetch1['id']?>" target="blank" class="btn btn-outline-primary col-3">PRINT</a>
                                         <a href="../../../modules/admin-viewfiles-route.php" class="btn btn-outline-danger col-3">BACK</a>
                                     </div>
-                                <?php } ?>
+                                <?php }?>    
 
                             </div>
                         </div>

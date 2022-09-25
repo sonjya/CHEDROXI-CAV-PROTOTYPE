@@ -32,7 +32,7 @@ $result4 = mysqli_query($connection,$sql4);
 $fetch4 = mysqli_fetch_assoc($result4);
 
 //announcements
-$qry = "select * from tbl_announcements where active='yes'";
+$qry = "select * from tbl_announcements where active='yes' order by date desc";
 $res = mysqli_query($connection,$qry);
 
 ?>

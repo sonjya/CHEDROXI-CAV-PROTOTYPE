@@ -249,7 +249,7 @@ $print = $_GET['print'];
             </div>
             <div class="row">
                 <div class="col-1"></div>
-                <div class="col-2">SN - CHED11NS60411</div>
+                <div class="col">SN - CHED11NS60411</div>
             </div>
 
 

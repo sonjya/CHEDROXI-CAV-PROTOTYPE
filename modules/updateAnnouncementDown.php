@@ -8,9 +8,9 @@ $sql = "update tbl_announcements set active='no' where id='$id'";
 
 try {
     mysqli_query($connection,$sql);
-    echo "<script> alert('ANNOUNCEMENT REMOVED');window.location.href='admin-viewannouncements-route.php'; </script>";
+    header('location:admin-viewannouncements-route.php');
 } catch (exception $e) {
-    echo "<script> alert('ERROR REMOVING ANNOUNCEMENT');window.location.href='admin-viewannouncements-route.php'; </script>";
+    header('location:admin-viewannouncements-route.php');
 }
 
 ?>
