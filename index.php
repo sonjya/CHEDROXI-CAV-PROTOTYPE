@@ -29,14 +29,21 @@ session_start();
                                         </div>
                                 <?php } ?>
 
-                                <div class="row">
-                                    <div class="col-3"></div>
-                                    <input type="submit" class="btn btn-outline-success col-6" value="LOGIN">
-                                </div>
+                                <input type="submit" class="btn btn-outline-success col-12" value="LOGIN">
+
                             </form>
                     </div>
                 </div>
         </div>
+        
+        <div class="container tracker" style="width:25rem;">
+            <div class="card">
+                <div class="card-body">
+                    <a href="modules/shared-track-route.php" target="blank" class="btn btn-outline-secondary col-12">TRACKER</a>
+                </div>
+            </div>
+        </div>
+
 
 
  
@@ -53,6 +60,9 @@ session_start();
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+            }
+            .container.tracker {
+                margin-top:10px;
             }
         </style>
 

@@ -16,7 +16,7 @@ $user = $fetch['lastname'] . ', ' . $fetch['firstname'];
 $search = $_GET['search'];
 
 //get all data
-$sql1 = "select a.id,firstname,middlename,lastname,coursedesc,applicationtype,ornumber,preparedby,reviewedby,documenttype,a.status from tbl_process a inner join tbl_courses b inner join tbl_user_school c where a.courseid=b.courseid and a.schoolid=c.schoolid and userid='$UID' and (lastname like '%$search%' or middlename like '%$search%' or firstname like '%$search%' or coursedesc like '%$search%' or applicationtype like '%$search%' or ornumber like '%$search%' or status like '%$search%')";
+$sql1 = "select a.id,firstname,middlename,lastname,coursedesc,applicationtype,ornumber,preparedby,reviewedby,documenttype,a.status from tbl_process a inner join tbl_courses b inner join tbl_user_school c where a.courseid=b.courseid and a.schoolid=c.schoolid and userid='$UID' and (lastname like '%$search%' or middlename like '%$search%' or firstname like '%$search%' or coursedesc like '%$search%' or applicationtype like '%$search%' or ornumber like '%$search%' or status like '%$search%') order by id desc";
 $result1 = mysqli_query($connection,$sql1);
 
 ?>
@@ -85,7 +85,7 @@ $result1 = mysqli_query($connection,$sql1);
                             <th>Reviewed By</th>
                             <th>Document Type</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <!-- <th>Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -102,7 +102,7 @@ $result1 = mysqli_query($connection,$sql1);
                                 <td><?=$fetch1['reviewedby']?></td>
                                 <td><?=$fetch1['documenttype']?></td>
                                 <td><?=$fetch1['status']?></td>
-                                <td><a href="" class="btn btn-outline-primary">VIEW</a></td>
+                                <!-- <td><a href="" class="btn btn-outline-primary">VIEW</a></td> -->
                             </tr>
                         <?php } ?>
                     </tbody>
