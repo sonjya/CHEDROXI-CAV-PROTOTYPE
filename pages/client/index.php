@@ -35,6 +35,10 @@ $fetch4 = mysqli_fetch_assoc($result4);
 $qry = "select * from tbl_announcements where active='yes' order by id desc";
 $res = mysqli_query($connection,$qry);
 
+//announcement_replies
+// $tmpsql = "select * from tbl_announcement_replies order by date desc ";
+// $tmpres = mysqli_query($connection,$tmpsql);
+
 ?>
 
 <!doctype html>
@@ -152,10 +156,50 @@ $res = mysqli_query($connection,$qry);
             <div class="card text-bg-success">
                 <div class="card-body">
                     <h1>ANNOUNCEMENTS</h1>
-                        <?php while($fet = mysqli_fetch_assoc($res)) { ?>
+                        <?php while($fet = mysqli_fetch_assoc($res)) { $tmpid = $fet['ID']; ?>
                             <div class="card mb-2">
                                 <div class="card-body">
-                                    <h6 style="color:red;font-style:italic">* <?=$fet['date']?> - <?=$fet['description']?></h6>
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-1 mb-3">
+                                                    <img src="../../images/logo.png" class="img-thumbnail"alt="">
+                                                </div>
+                                                <div class="col"><h2 style="color:black;">CHEDROXI</h2><h6 style="color:black;"><?=$fet['date']?></h6></div>
+                                      
+                                            </div>
+                                            <h6 style="color:red;font-style:italic;text-indent:5ch;"><?=$fet['description']?></h6>
+                                        </div>
+                                    </div>
+                                    <form method="post" action="../../modules/announcement-reply.php">
+                                        <div class="card">
+                                            <div class="card-body">
+
+                                                <?php $tmpsql = "select id,schooldesc,announcementid,reply,date from tbl_announcement_replies a inner join tbl_schools b where a.schoolid=b.schoolid and announcementid='$tmpid' order by date asc";$tmpres = mysqli_query($connection,$tmpsql);
+                                                    while($tmpfet=mysqli_fetch_assoc($tmpres)){ ?>
+                                                        <div class="card mb-2">
+                                                            <div class="card-body">
+                                                                <div class="col" style="color:black;">
+                                                                    <h6><?=$tmpfet['schooldesc']?></h6>
+                                                                    <p style="font-size:10px;"><?=$tmpfet['date']?></p>
+                                                                </div>
+                                                                <div class="col" style="color:black;"><p style="text-indent:5ch;font-size:14px;"><?=$tmpfet['reply']?></p></div>
+                                                            </div>
+                                                        </div>
+                                                <?php } ?>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-1" style="color: black;"><h5>REPLY:</h5></div>
+                                                    <div class="col-10">
+                                                        <input type="hidden" name="announcementid" value="<?=$fet['ID']?>">
+                                                        <input type="hidden" name="schoolid" value="<?=$sid?>">
+                                                        <input type="text" class="form-control" name="reply" required>
+                                                    </div>
+                                                    <div class="col"><input type="submit" class="btn btn-outline-primary" value="SEND"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         <?php } ?>

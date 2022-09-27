@@ -39,6 +39,14 @@ $sql5 = "select count(id) as total from tbl_process where status='validated' and
 $result5 = mysqli_query($connection,$sql5);
 $fetch5 = mysqli_fetch_assoc($result5);
 
+//count messages
+$sql6 = "select count(id) as unread,id,b.schoolid,schooldesc from tbl_messages a inner join tbl_schools b where a.schoolid=b.schoolid and status=1 group by schooldesc";
+$result6 = mysqli_query($connection,$sql6);
+
+//display all messages
+$sql7 = "select count(*) as total,id,b.schoolid,schooldesc from tbl_messages a inner join tbl_schools b where a.schoolid=b.schoolid group by schooldesc";
+$result7 = mysqli_query($connection,$sql7);
+
 ?>
 
 <!doctype html>
@@ -57,6 +65,7 @@ $fetch5 = mysqli_fetch_assoc($result5);
                 <a class="navbar-brand">CHEDROXI-CAV</a>
                 
                 <li class="nav-item dropdown d-flex">
+
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="mdi mdi-account"></span> <?= $user ?></a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="../shared/viewProfile.php"><span class="mdi mdi-account-edit"></span> Profile settings</a></li>
@@ -81,6 +90,7 @@ $fetch5 = mysqli_fetch_assoc($result5);
                         <div class="col-6 mt-4">
                             <h1>Welcome <?=$user?></h1>
                             <h5><?=$role?></h5>
+                            <a class="btn btn-outline-primary" data-bs-toggle="offcanvas" href="#offcanvasRight" role="button" aria-controls="offcanvasExample"><span class="mdi mdi-inbox"></span> Inbox</a>
                             <a href="../../modules/admin-viewannouncements-route.php" class="btn btn-outline-primary"><span class="mdi mdi-bullhorn-variant-outline"></span> Announcement</a>
                         </div>
                     </div>
@@ -175,6 +185,42 @@ $fetch5 = mysqli_fetch_assoc($result5);
 
                 </div>
             </div>
+
+        </div>
+
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h3 class="offcanvas-title" id="offcanvasRightLabel">MESSAGES <a href="" class="btn btn-sm btn-outline-primary"><span class="mdi mdi-email-edit-outline"></span> Compose</a> </h3>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            
+            <h5>UNREAD</h5>
+            <?php while($fetch6 = mysqli_fetch_assoc($result6)) {  ?>
+
+                <a href="../../modules/viewMessage.php?id=<?=$fetch6['schoolid']?>" class="card mb-1 btn">
+                    <div class="card-body">
+                        <h5><?=$fetch6['schooldesc']?></h5>
+                        <p><span class="badge bg-success"><?=$fetch6['unread']?></span> new messages.</p>
+                    </div>
+                </a >
+
+            <?php }  ?>
+
+            <hr>
+
+            <h5>ALL MESSAGES</h5>
+
+            <?php while($fetch7 = mysqli_fetch_assoc($result7)) {  ?>
+
+                <a href="../shared/viewMessage.php?id=<?=$fetch7['schoolid']?>" class="card mb-1 btn">
+                    <div class="card-body">
+                        <h5><?=$fetch7['schooldesc']?></h5>
+                    </div>
+                </a >
+
+            <?php }  ?>
 
         </div>
     
