@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2022 at 06:52 PM
+-- Generation Time: Sep 27, 2022 at 01:59 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -41,6 +41,32 @@ CREATE TABLE `tbl_announcements` (
 INSERT INTO `tbl_announcements` (`ID`, `description`, `date`, `active`) VALUES
 (8, 'This is to inform you that starting March 2023 we will be using this CAV System. Please inform your school head administration.', '2022-09-25', 'yes'),
 (9, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Vivamus at augue eget arcu dictum varius. Vitae suscipit tellus mauris a diam. Turpis massa sed elementum tempus egestas sed sed. Magna fermentum iaculis eu non. Tristique nulla aliquet enim tortor at auctor urna nunc id. Vitae congue mauris rhoncus aenean vel elit. Amet cons', '2022-09-25', 'yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_announcement_replies`
+--
+
+CREATE TABLE `tbl_announcement_replies` (
+  `id` int(11) NOT NULL,
+  `schoolid` int(11) NOT NULL,
+  `announcementid` int(11) NOT NULL,
+  `reply` varchar(500) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_announcement_replies`
+--
+
+INSERT INTO `tbl_announcement_replies` (`id`, `schoolid`, `announcementid`, `reply`, `date`) VALUES
+(7, 2, 9, 'noted po maam/sir', '2022-09-27'),
+(8, 2, 9, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Vivamus at augue eget arcu dictum varius. Vitae suscipit tellus mauris a diam. Turpis massa sed elementum tempus egestas sed sed. Magna fermentum iaculis eu non. Tristique nulla aliquet enim tortor at auctor urna nunc id. Vitae congue mauris rhoncus aenean vel elit. Amet cons', '2022-09-27'),
+(9, 5, 9, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Vivamus at augue eget arcu dictum varius. Vitae suscipit tellus mauris a diam. Turpis massa sed elementum tempus egestas sed sed. Magna fermentum iaculis eu non. Tristique nulla aliquet enim tortor at auctor urna nunc id. Vitae congue mauris rhoncus aenean vel elit. Amet cons', '2022-09-27'),
+(10, 1, 9, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Vivamus at augue eget arcu dictum varius. Vitae suscipit tellus mauris a diam. Turpis massa sed elementum tempus egestas sed sed. Magna fermentum iaculis eu non. Tristique nulla aliquet enim tortor at auctor urna nunc id. Vitae congue mauris rhoncus aenean vel elit. Amet cons', '2022-09-27'),
+(11, 1, 8, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Vivamus at augue eget arcu dictum varius. Vitae suscipit tellus mauris a diam. Turpis massa sed elementum tempus egestas sed sed. Magna fermentum iaculis eu non. Tristique nulla aliquet enim tortor at auctor urna nunc id. Vitae congue mauris rhoncus aenean vel elit. Amet cons', '2022-09-27'),
+(12, 1, 8, 'okiie', '2022-09-27');
 
 -- --------------------------------------------------------
 
@@ -91,6 +117,39 @@ INSERT INTO `tbl_courses` (`courseID`, `schoolID`, `courseTitle`, `courseDesc`, 
 (8, 1, 'BSTLE', 'Bachelor of Science in TLE', 'Yes'),
 (9, 5, 'BSPM', 'Bachelor of Science in Pet Management', 'yes'),
 (10, 2, 'BSAE', 'Bachelor of Science in Agriculture', 'no');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_messages`
+--
+
+CREATE TABLE `tbl_messages` (
+  `id` int(11) NOT NULL,
+  `messagefrom` int(11) NOT NULL,
+  `messageto` int(11) NOT NULL,
+  `message` varchar(500) NOT NULL,
+  `status` int(11) NOT NULL,
+  `datetime` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_messages`
+--
+
+INSERT INTO `tbl_messages` (`id`, `messagefrom`, `messageto`, `message`, `status`, `datetime`) VALUES
+(1, 2, 10, 'Hello', 1, '2022-09-27 07:14:37'),
+(2, 2, 10, 'testtesttesttesttesttesttesttest', 1, '2022-09-27 07:26:55'),
+(3, 2, 10, 'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest', 1, '2022-09-27 07:26:55'),
+(4, 3, 10, 'testtesttesttesttesttesttesttesttesttesttesttesttesttesttest', 1, '2022-09-27 07:27:05'),
+(5, 3, 10, 'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest', 1, '2022-09-27 07:27:05'),
+(6, 2, 10, 'asdasdasdasdasdasdsd', 1, '2022-09-27 08:25:50'),
+(7, 2, 10, 'asdasdasdasdasdasdasdasdasdas   asdasd', 1, '2022-09-27 08:25:50'),
+(8, 2, 10, 'asasdasdasdasdasd', 1, '2022-09-27 08:26:24'),
+(9, 3, 10, 'sdasdasdasdasdasd asd asd asd asd asdasdas', 1, '2022-09-27 08:26:24'),
+(10, 2, 10, ' asda sd asd asd asd asd asd asd', 1, '2022-09-27 08:26:34'),
+(11, 4, 10, ' asda sd asd asd asd asd', 0, '2022-09-27 08:26:34'),
+(12, 2, 10, 'voang', 1, '2022-09-27 08:39:35');
 
 -- --------------------------------------------------------
 
@@ -275,6 +334,12 @@ ALTER TABLE `tbl_announcements`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `tbl_announcement_replies`
+--
+ALTER TABLE `tbl_announcement_replies`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_commissioners`
 --
 ALTER TABLE `tbl_commissioners`
@@ -287,6 +352,12 @@ ALTER TABLE `tbl_courses`
   ADD PRIMARY KEY (`courseID`),
   ADD UNIQUE KEY `courseDesc` (`courseDesc`),
   ADD KEY `schoolID` (`schoolID`);
+
+--
+-- Indexes for table `tbl_messages`
+--
+ALTER TABLE `tbl_messages`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_prices`
@@ -341,6 +412,12 @@ ALTER TABLE `tbl_announcements`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `tbl_announcement_replies`
+--
+ALTER TABLE `tbl_announcement_replies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `tbl_commissioners`
 --
 ALTER TABLE `tbl_commissioners`
@@ -351,6 +428,12 @@ ALTER TABLE `tbl_commissioners`
 --
 ALTER TABLE `tbl_courses`
   MODIFY `courseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `tbl_messages`
+--
+ALTER TABLE `tbl_messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_prices`
