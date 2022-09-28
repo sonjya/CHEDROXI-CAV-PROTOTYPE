@@ -40,11 +40,11 @@ $result5 = mysqli_query($connection,$sql5);
 $fetch5 = mysqli_fetch_assoc($result5);
 
 //count messages
-$sql6 = "select count(id) as unread,id,b.schoolid,schooldesc from tbl_messages a inner join tbl_schools b where a.schoolid=b.schoolid and status=1 group by schooldesc";
+$sql6 = "select count(id) as unread,id,messagefrom,schooldesc from tbl_messages a inner join tbl_schools b where messagefrom=b.schoolid and status=1 group by schooldesc";
 $result6 = mysqli_query($connection,$sql6);
 
 //display all messages
-$sql7 = "select count(*) as total,id,b.schoolid,schooldesc from tbl_messages a inner join tbl_schools b where a.schoolid=b.schoolid group by schooldesc";
+$sql7 = "select count(*) as total,id,messagefrom,schooldesc from tbl_messages a inner join tbl_schools b where messagefrom=b.schoolid group by schooldesc";
 $result7 = mysqli_query($connection,$sql7);
 
 ?>
@@ -199,7 +199,7 @@ $result7 = mysqli_query($connection,$sql7);
             <h5>UNREAD</h5>
             <?php while($fetch6 = mysqli_fetch_assoc($result6)) {  ?>
 
-                <a href="../../modules/viewMessage.php?id=<?=$fetch6['schoolid']?>" class="card mb-1 btn">
+                <a href="../../modules/viewMessage.php?id=<?=$fetch6['messagefrom']?>" class="card mb-1 btn">
                     <div class="card-body">
                         <h5><?=$fetch6['schooldesc']?></h5>
                         <p><span class="badge bg-success"><?=$fetch6['unread']?></span> new messages.</p>
@@ -214,7 +214,7 @@ $result7 = mysqli_query($connection,$sql7);
 
             <?php while($fetch7 = mysqli_fetch_assoc($result7)) {  ?>
 
-                <a href="../shared/viewMessage.php?id=<?=$fetch7['schoolid']?>" class="card mb-1 btn">
+                <a href="../shared/viewMessage.php?id=<?=$fetch7['messagefrom']?>" class="card mb-1 btn">
                     <div class="card-body">
                         <h5><?=$fetch7['schooldesc']?></h5>
                     </div>

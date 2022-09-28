@@ -4,7 +4,7 @@ require_once "dbconnection.php";
 
 $schoolid = $_GET['id'];
 
-$sql = "update tbl_messages set status=0 where schoolid='$schoolid'";
+$sql = "update tbl_messages set status=0 where messagefrom='$schoolid'";
 
 try {
     mysqli_query($connection,$sql);

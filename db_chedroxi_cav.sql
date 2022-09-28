@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2022 at 01:59 PM
+-- Generation Time: Sep 28, 2022 at 12:47 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -66,7 +66,8 @@ INSERT INTO `tbl_announcement_replies` (`id`, `schoolid`, `announcementid`, `rep
 (9, 5, 9, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Vivamus at augue eget arcu dictum varius. Vitae suscipit tellus mauris a diam. Turpis massa sed elementum tempus egestas sed sed. Magna fermentum iaculis eu non. Tristique nulla aliquet enim tortor at auctor urna nunc id. Vitae congue mauris rhoncus aenean vel elit. Amet cons', '2022-09-27'),
 (10, 1, 9, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Vivamus at augue eget arcu dictum varius. Vitae suscipit tellus mauris a diam. Turpis massa sed elementum tempus egestas sed sed. Magna fermentum iaculis eu non. Tristique nulla aliquet enim tortor at auctor urna nunc id. Vitae congue mauris rhoncus aenean vel elit. Amet cons', '2022-09-27'),
 (11, 1, 8, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Vivamus at augue eget arcu dictum varius. Vitae suscipit tellus mauris a diam. Turpis massa sed elementum tempus egestas sed sed. Magna fermentum iaculis eu non. Tristique nulla aliquet enim tortor at auctor urna nunc id. Vitae congue mauris rhoncus aenean vel elit. Amet cons', '2022-09-27'),
-(12, 1, 8, 'okiie', '2022-09-27');
+(12, 1, 8, 'okiie', '2022-09-27'),
+(13, 2, 9, 'hala oyy nag-ulaaann,', '2022-09-28');
 
 -- --------------------------------------------------------
 
@@ -415,7 +416,7 @@ ALTER TABLE `tbl_announcements`
 -- AUTO_INCREMENT for table `tbl_announcement_replies`
 --
 ALTER TABLE `tbl_announcement_replies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_commissioners`
