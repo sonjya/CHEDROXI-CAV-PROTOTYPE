@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2022 at 03:50 PM
+-- Generation Time: Oct 01, 2022 at 06:08 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -127,30 +127,58 @@ INSERT INTO `tbl_courses` (`courseID`, `schoolID`, `courseTitle`, `courseDesc`, 
 
 CREATE TABLE `tbl_messages` (
   `id` int(11) NOT NULL,
-  `messagefrom` int(11) NOT NULL,
-  `messageto` int(11) NOT NULL,
+  `schoolid` int(11) NOT NULL,
   `message` varchar(500) NOT NULL,
-  `status` int(11) NOT NULL,
-  `datetime` timestamp NOT NULL DEFAULT current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `active` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_messages`
 --
 
-INSERT INTO `tbl_messages` (`id`, `messagefrom`, `messageto`, `message`, `status`, `datetime`) VALUES
-(1, 2, 10, 'Hello', 1, '2022-09-27 07:14:37'),
-(2, 2, 10, 'testtesttesttesttesttesttesttest', 1, '2022-09-27 07:26:55'),
-(3, 2, 10, 'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest', 1, '2022-09-27 07:26:55'),
-(4, 3, 10, 'testtesttesttesttesttesttesttesttesttesttesttesttesttesttest', 1, '2022-09-27 07:27:05'),
-(5, 3, 10, 'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest', 1, '2022-09-27 07:27:05'),
-(6, 2, 10, 'asdasdasdasdasdasdsd', 1, '2022-09-27 08:25:50'),
-(7, 2, 10, 'asdasdasdasdasdasdasdasdasdas   asdasd', 1, '2022-09-27 08:25:50'),
-(8, 2, 10, 'asasdasdasdasdasd', 1, '2022-09-27 08:26:24'),
-(9, 3, 10, 'sdasdasdasdasdasd asd asd asd asd asdasdas', 1, '2022-09-27 08:26:24'),
-(10, 2, 10, ' asda sd asd asd asd asd asd asd', 1, '2022-09-27 08:26:34'),
-(11, 4, 10, ' asda sd asd asd asd asd', 0, '2022-09-27 08:26:34'),
-(12, 2, 10, 'voang', 1, '2022-09-27 08:39:35');
+INSERT INTO `tbl_messages` (`id`, `schoolid`, `message`, `date`, `active`) VALUES
+(1, 2, 'testing wan toh treh', '2022-10-01 15:54:27', 1),
+(2, 2, 'test', '2022-10-01 15:54:27', 1),
+(3, 2, 'test', '2022-10-01 15:54:27', 1),
+(4, 2, 'test', '2022-10-01 15:54:27', 1),
+(5, 2, 'test', '2022-10-01 15:54:27', 1),
+(6, 2, 'test', '2022-10-01 15:54:27', 1),
+(7, 2, 'test', '2022-10-01 15:54:27', 1),
+(8, 2, 'test', '2022-10-01 15:54:27', 1),
+(9, 2, 'test', '2022-10-01 15:54:27', 1),
+(10, 2, 'test', '2022-10-01 15:54:27', 1),
+(11, 2, 'test', '2022-10-01 15:54:27', 1),
+(12, 2, 'test', '2022-10-01 15:54:27', 1),
+(13, 2, 'test', '2022-10-01 15:54:27', 1),
+(14, 2, 'test', '2022-10-01 15:54:27', 1),
+(15, 2, 'test', '2022-10-01 15:54:27', 1),
+(16, 2, 'test', '2022-10-01 15:54:27', 1),
+(17, 3, 'test', '2022-10-01 15:55:26', 1),
+(18, 3, 'test', '2022-10-01 15:55:26', 1),
+(19, 3, 'test', '2022-10-01 15:55:26', 1),
+(20, 3, 'test', '2022-10-01 15:55:26', 1),
+(21, 3, 'test', '2022-10-01 15:55:26', 1),
+(22, 3, 'test', '2022-10-01 15:55:26', 1),
+(23, 3, 'test', '2022-10-01 15:55:26', 1),
+(24, 3, 'test', '2022-10-01 15:55:26', 1),
+(25, 3, 'test', '2022-10-01 15:55:26', 1),
+(26, 3, 'test', '2022-10-01 15:55:26', 1),
+(27, 3, 'test', '2022-10-01 15:55:26', 1),
+(28, 3, 'test', '2022-10-01 15:55:26', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_message_replies`
+--
+
+CREATE TABLE `tbl_message_replies` (
+  `id` int(11) NOT NULL,
+  `messageid` int(11) NOT NULL,
+  `reply` varchar(500) NOT NULL,
+  `datetime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -361,6 +389,12 @@ ALTER TABLE `tbl_messages`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_message_replies`
+--
+ALTER TABLE `tbl_message_replies`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_prices`
 --
 ALTER TABLE `tbl_prices`
@@ -434,7 +468,13 @@ ALTER TABLE `tbl_courses`
 -- AUTO_INCREMENT for table `tbl_messages`
 --
 ALTER TABLE `tbl_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `tbl_message_replies`
+--
+ALTER TABLE `tbl_message_replies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_prices`

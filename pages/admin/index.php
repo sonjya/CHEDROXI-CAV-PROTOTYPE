@@ -39,12 +39,12 @@ $sql5 = "select count(id) as total from tbl_process where status='validated' and
 $result5 = mysqli_query($connection,$sql5);
 $fetch5 = mysqli_fetch_assoc($result5);
 
-//count messages
-$sql6 = "select count(id) as unread,id,messagefrom,schooldesc from tbl_messages a inner join tbl_schools b where messagefrom=b.schoolid and status=1 group by schooldesc";
+//count new messages
+$sql6 = "select count(a.id) as total,schooldesc,a.schoolid from tbl_messages a inner join tbl_schools b where a.schoolid=b.schoolid and a.active=1 group by schooldesc";
 $result6 = mysqli_query($connection,$sql6);
 
-//display all messages
-$sql7 = "select count(*) as total,id,messagefrom,schooldesc from tbl_messages a inner join tbl_schools b where messagefrom=b.schoolid group by schooldesc";
+//get all messages
+$sql7 = "select a.schoolid,schooldesc from tbl_messages a inner join tbl_schools b where a.schoolid=b.schoolid group by schooldesc";
 $result7 = mysqli_query($connection,$sql7);
 
 ?>
@@ -195,33 +195,24 @@ $result7 = mysqli_query($connection,$sql7);
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            
-            <h5>UNREAD</h5>
-            <?php while($fetch6 = mysqli_fetch_assoc($result6)) {  ?>
-
-                <a href="../../modules/viewMessage.php?id=<?=$fetch6['messagefrom']?>" class="card mb-1 btn">
+            <h1>UNREAD</h1>
+            <?php while($fetch6=mysqli_fetch_assoc($result6)) {?>
+                <a href="pages/message.php?id=<?=$fetch6['schoolid']?>" target="blank" class="card mb-1 btn">
                     <div class="card-body">
                         <h5><?=$fetch6['schooldesc']?></h5>
-                        <p><span class="badge bg-success"><?=$fetch6['unread']?></span> new messages.</p>
+                        <p><span class="badge bg-success"><?=$fetch6['total']?></span> new messages.</p>
                     </div>
-                </a >
-
-            <?php }  ?>
-
+                </a>
+            <?php }?>
             <hr>
-
-            <h5>ALL MESSAGES</h5>
-
-            <?php while($fetch7 = mysqli_fetch_assoc($result7)) {  ?>
-
-                <a href="../shared/viewMessage.php?id=<?=$fetch7['messagefrom']?>" class="card mb-1 btn">
+            <h1>ALL MESSAGES</h1>
+            <?php while($fetch7=mysqli_fetch_assoc($result7)) { ?>
+                <a href="pages/message.php?id=<?=$fetch7['schoolid']?>" target="blank" class="card mb-1 btn">
                     <div class="card-body">
                         <h5><?=$fetch7['schooldesc']?></h5>
                     </div>
-                </a >
-
-            <?php }  ?>
-
+                </a>
+            <?php }?>
         </div>
     
 
