@@ -15,10 +15,9 @@ $user = $fetch['lastname'] . ', ' . $fetch['firstname'];
 $role = $fetch['roleDesc'];
 
 $search = $_GET['search'];
-$id = $_GET['id'];
 
 //getting messages
-$sql1 = "select a.id,a.schoolid,schooldesc,message,date,a.active from tbl_messages a inner join tbl_schools b where a.schoolid=b.schoolid and a.schoolid='$id' and (message like '%$search%' or date like '%$search%') order by date desc";
+$sql1 = "select a.id,a.schoolid,schooldesc,message,date,a.active from tbl_messages a inner join tbl_schools b where a.schoolid=b.schoolid and (message like '%$search%' or schooldesc like '%$search%' or date like '%$search%') order by a.id desc";
 $result1 = mysqli_query($connection, $sql1); 
 
 ?>
@@ -67,19 +66,21 @@ $result1 = mysqli_query($connection, $sql1);
                             </div>
                         </div>
                     </form>
-
+                    <br>
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th class="col-2">DATE - TIME</th>
+                                <th class="col-2">SENDER</th>
                                 <th class="col-10">MESSAGE</th>
                                 <th class="col-1">ACTION</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php while($fetch1 = mysqli_fetch_assoc($result1)) { ?>
-                                <tr>
+                                <tr <?php if ($fetch1['active'] == 1) {echo "style='background-color:#E0E0E0E0;font-style:italic;'";}?>>
                                     <td><?=$fetch1['date']?></td>
+                                    <td><?=$fetch1['schooldesc']?></td>
                                     <td><?=$fetch1['message']?></td>
                                     <td><a href="viewMessageDetail.php?id=<?=$fetch1['id']?>" class="btn btn-outline-primary">VIEW</a></td>
                                 </tr>

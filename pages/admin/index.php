@@ -40,12 +40,9 @@ $result5 = mysqli_query($connection,$sql5);
 $fetch5 = mysqli_fetch_assoc($result5);
 
 //count new messages
-$sql6 = "select count(a.id) as total,schooldesc,a.schoolid from tbl_messages a inner join tbl_schools b where a.schoolid=b.schoolid and a.active=1 group by schooldesc";
+$sql6 = "select count(a.id) as total from tbl_messages a inner join tbl_schools b where a.schoolid=b.schoolid and a.active=1";
 $result6 = mysqli_query($connection,$sql6);
-
-//get all messages
-$sql7 = "select a.schoolid,schooldesc from tbl_messages a inner join tbl_schools b where a.schoolid=b.schoolid group by schooldesc";
-$result7 = mysqli_query($connection,$sql7);
+$fetch6 = mysqli_fetch_assoc($result6);
 
 ?>
 
@@ -90,7 +87,7 @@ $result7 = mysqli_query($connection,$sql7);
                         <div class="col-6 mt-4">
                             <h1>Welcome <?=$user?></h1>
                             <h5><?=$role?></h5>
-                            <a class="btn btn-outline-primary" data-bs-toggle="offcanvas" href="#offcanvasRight" role="button" aria-controls="offcanvasExample"><span class="mdi mdi-inbox"></span> Inbox</a>
+                            <a class="btn btn-outline-primary" href="pages/viewMessages.php?search="><span class="mdi mdi-inbox"></span> Inbox <span class="badge bg-primary"> <?=$fetch6['total']?> </span></a>
                             <a href="../../modules/admin-viewannouncements-route.php" class="btn btn-outline-primary"><span class="mdi mdi-bullhorn-variant-outline"></span> Announcement</a>
                         </div>
                     </div>
@@ -186,35 +183,7 @@ $result7 = mysqli_query($connection,$sql7);
                 </div>
             </div>
 
-        </div>
-
-
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-            <h3 class="offcanvas-title" id="offcanvasRightLabel">MESSAGES <a href="" class="btn btn-sm btn-outline-primary"><span class="mdi mdi-email-edit-outline"></span> Compose</a> </h3>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <h1>UNREAD</h1>
-            <?php while($fetch6=mysqli_fetch_assoc($result6)) {?>
-                <a href="../../modules/admin-viewmessages-route.php?id=<?=$fetch6['schoolid']?>" class="card mb-1 btn">
-                    <div class="card-body">
-                        <h5><?=$fetch6['schooldesc']?></h5>
-                        <p><span class="badge bg-success"><?=$fetch6['total']?></span> new messages.</p>
-                    </div>
-                </a>
-            <?php }?>
-            <hr>
-            <h1>ALL MESSAGES</h1>
-            <?php while($fetch7=mysqli_fetch_assoc($result7)) { ?>
-                <a href="../../modules/admin-viewmessages-route.php?id=<?=$fetch7['schoolid']?>" class="card mb-1 btn">
-                    <div class="card-body">
-                        <h5><?=$fetch7['schooldesc']?></h5>
-                    </div>
-                </a>
-            <?php }?>
-        </div>
-    
+        </div>    
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
