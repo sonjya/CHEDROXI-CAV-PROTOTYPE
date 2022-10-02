@@ -197,7 +197,7 @@ $result7 = mysqli_query($connection,$sql7);
         <div class="offcanvas-body">
             <h1>UNREAD</h1>
             <?php while($fetch6=mysqli_fetch_assoc($result6)) {?>
-                <a href="pages/message.php?id=<?=$fetch6['schoolid']?>" target="blank" class="card mb-1 btn">
+                <a href="../../modules/admin-viewmessages-route.php?id=<?=$fetch6['schoolid']?>" class="card mb-1 btn">
                     <div class="card-body">
                         <h5><?=$fetch6['schooldesc']?></h5>
                         <p><span class="badge bg-success"><?=$fetch6['total']?></span> new messages.</p>
@@ -207,7 +207,7 @@ $result7 = mysqli_query($connection,$sql7);
             <hr>
             <h1>ALL MESSAGES</h1>
             <?php while($fetch7=mysqli_fetch_assoc($result7)) { ?>
-                <a href="pages/message.php?id=<?=$fetch7['schoolid']?>" target="blank" class="card mb-1 btn">
+                <a href="../../modules/admin-viewmessages-route.php?id=<?=$fetch7['schoolid']?>" class="card mb-1 btn">
                     <div class="card-body">
                         <h5><?=$fetch7['schooldesc']?></h5>
                     </div>
