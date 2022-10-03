@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2022 at 06:08 PM
+-- Generation Time: Oct 03, 2022 at 05:23 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -138,34 +138,35 @@ CREATE TABLE `tbl_messages` (
 --
 
 INSERT INTO `tbl_messages` (`id`, `schoolid`, `message`, `date`, `active`) VALUES
-(1, 2, 'testing wan toh treh', '2022-10-01 15:54:27', 1),
-(2, 2, 'test', '2022-10-01 15:54:27', 1),
-(3, 2, 'test', '2022-10-01 15:54:27', 1),
-(4, 2, 'test', '2022-10-01 15:54:27', 1),
-(5, 2, 'test', '2022-10-01 15:54:27', 1),
-(6, 2, 'test', '2022-10-01 15:54:27', 1),
-(7, 2, 'test', '2022-10-01 15:54:27', 1),
-(8, 2, 'test', '2022-10-01 15:54:27', 1),
-(9, 2, 'test', '2022-10-01 15:54:27', 1),
-(10, 2, 'test', '2022-10-01 15:54:27', 1),
-(11, 2, 'test', '2022-10-01 15:54:27', 1),
-(12, 2, 'test', '2022-10-01 15:54:27', 1),
-(13, 2, 'test', '2022-10-01 15:54:27', 1),
-(14, 2, 'test', '2022-10-01 15:54:27', 1),
-(15, 2, 'test', '2022-10-01 15:54:27', 1),
-(16, 2, 'test', '2022-10-01 15:54:27', 1),
-(17, 3, 'test', '2022-10-01 15:55:26', 1),
-(18, 3, 'test', '2022-10-01 15:55:26', 1),
-(19, 3, 'test', '2022-10-01 15:55:26', 1),
-(20, 3, 'test', '2022-10-01 15:55:26', 1),
-(21, 3, 'test', '2022-10-01 15:55:26', 1),
-(22, 3, 'test', '2022-10-01 15:55:26', 1),
-(23, 3, 'test', '2022-10-01 15:55:26', 1),
-(24, 3, 'test', '2022-10-01 15:55:26', 1),
-(25, 3, 'test', '2022-10-01 15:55:26', 1),
-(26, 3, 'test', '2022-10-01 15:55:26', 1),
-(27, 3, 'test', '2022-10-01 15:55:26', 1),
-(28, 3, 'test', '2022-10-01 15:55:26', 1);
+(1, 2, 'testing wan toh treh', '2022-10-02 07:08:08', 0),
+(2, 2, 'test', '2022-10-02 06:56:04', 1),
+(3, 2, 'test', '2022-10-02 06:56:04', 1),
+(4, 2, 'test', '2022-10-02 06:56:04', 1),
+(5, 2, 'test', '2022-10-02 06:56:04', 1),
+(6, 2, 'test', '2022-10-02 06:56:04', 1),
+(7, 2, 'test', '2022-10-02 06:56:04', 1),
+(8, 2, 'test', '2022-10-02 06:56:04', 1),
+(9, 2, 'test', '2022-10-02 06:56:04', 1),
+(10, 2, 'test', '2022-10-02 06:56:04', 1),
+(11, 2, 'test', '2022-10-02 06:56:04', 1),
+(12, 2, 'test', '2022-10-02 06:56:04', 1),
+(13, 2, 'test', '2022-10-02 06:56:04', 1),
+(14, 2, 'test', '2022-10-02 06:56:04', 1),
+(15, 2, 'test', '2022-10-02 06:56:04', 1),
+(16, 2, 'test', '2022-10-02 06:56:04', 1),
+(17, 3, 'test', '2022-10-02 06:56:04', 1),
+(18, 3, 'test', '2022-10-02 06:56:04', 1),
+(19, 3, 'test', '2022-10-02 06:56:04', 1),
+(20, 3, 'test', '2022-10-02 06:56:04', 1),
+(21, 3, 'test', '2022-10-02 06:56:04', 1),
+(22, 3, 'test', '2022-10-02 06:56:04', 1),
+(23, 3, 'test', '2022-10-02 06:56:04', 1),
+(24, 3, 'test', '2022-10-02 06:56:04', 1),
+(25, 3, 'test', '2022-10-02 06:56:04', 1),
+(26, 3, 'test', '2022-10-02 06:56:04', 1),
+(27, 3, 'test', '2022-10-02 06:56:04', 1),
+(28, 3, 'test', '2022-10-02 06:56:04', 1),
+(29, 2, 'sunday', '2022-10-03 14:47:38', 0);
 
 -- --------------------------------------------------------
 
@@ -176,9 +177,23 @@ INSERT INTO `tbl_messages` (`id`, `schoolid`, `message`, `date`, `active`) VALUE
 CREATE TABLE `tbl_message_replies` (
   `id` int(11) NOT NULL,
   `messageid` int(11) NOT NULL,
+  `schoolid` int(11) NOT NULL,
   `reply` varchar(500) NOT NULL,
-  `datetime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `datetime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_message_replies`
+--
+
+INSERT INTO `tbl_message_replies` (`id`, `messageid`, `schoolid`, `reply`, `datetime`, `status`) VALUES
+(7, 1, 10, 'asdad', '2022-10-03 15:13:55', 0),
+(8, 1, 10, 'testing waters lezggo', '2022-10-03 15:13:55', 0),
+(9, 1, 10, 'mictest', '2022-10-03 15:13:55', 0),
+(10, 1, 2, 'yes po?', '2022-10-03 15:13:55', 0),
+(11, 1, 2, 'hello pooo', '2022-10-03 15:13:55', 0),
+(12, 1, 2, 'aahh okkii noted po', '2022-10-03 15:13:55', 0);
 
 -- --------------------------------------------------------
 
@@ -350,7 +365,8 @@ INSERT INTO `tbl_user_school` (`ID`, `userID`, `schoolID`, `active`) VALUES
 (1, 2, 2, 'Yes'),
 (2, 3, 1, 'yes'),
 (3, 4, 5, 'yes'),
-(6, 12, 10, 'yes');
+(6, 12, 10, 'yes'),
+(7, 1, 10, 'yes');
 
 --
 -- Indexes for dumped tables
@@ -468,13 +484,13 @@ ALTER TABLE `tbl_courses`
 -- AUTO_INCREMENT for table `tbl_messages`
 --
 ALTER TABLE `tbl_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tbl_message_replies`
 --
 ALTER TABLE `tbl_message_replies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_prices`
@@ -510,7 +526,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_user_school`
 --
 ALTER TABLE `tbl_user_school`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

@@ -70,7 +70,7 @@ $result1 = mysqli_query($connection,$sql1);
                         <thead>
                             <tr>
                                 <th class="col-2">DATE- TIME</th>
-                                <th class="col-1">REPLIES</th>
+                                <th class="col-1">NEW REPLIES</th>
                                 <th class="col-9">MESSAGE</th>
                                 <th>ACTION</th>
                             </tr>
