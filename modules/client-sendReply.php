@@ -10,9 +10,9 @@ $sql = "insert into tbl_message_replies values (0,'$messageid','$schoolid','$rep
 
 try {
     mysqli_query($connection,$sql);
-    header("location:../pages/admin/pages/viewMessageDetail.php?id=$messageid");
+    header("location:../pages/client/pages/viewMessageDetails.php?id=$messageid");
 } catch(exception $e) {
-    echo "error";
+    echo $e;
 }
 
 

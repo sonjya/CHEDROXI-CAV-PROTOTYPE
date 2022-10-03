@@ -35,9 +35,9 @@ $fetch4 = mysqli_fetch_assoc($result4);
 $qry = "select * from tbl_announcements where active='yes' order by id desc";
 $res = mysqli_query($connection,$qry);
 
-//announcement_replies
-// $tmpsql = "select * from tbl_announcement_replies order by date desc ";
-// $tmpres = mysqli_query($connection,$tmpsql);
+//count replies
+$qry1 = "select count(id) as total from tbl_message_replies where schoolid=10 and status=1";
+$res1 = mysqli_fetch_assoc(mysqli_query($connection,$qry1));
 
 ?>
 
@@ -58,6 +58,7 @@ $res = mysqli_query($connection,$qry);
                 <li class="nav-item dropdown d-flex">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= $user ?></a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="pages/viewMessages.php?search=">Messages <span class="badge bg-primary"><?=$res1['total']?></span></a></li>
                             <li><a class="dropdown-item" href="../shared/viewProfile.php">Profile settings</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="../../modules/logout.php" style="color: red;">LOGOUT</a></li>

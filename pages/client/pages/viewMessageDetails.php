@@ -37,6 +37,14 @@ $sql4 = "select schoolid from tbl_user_school where userid='$UID'";
 $result4 = mysqli_query($connection,$sql4);
 $fetch4 = mysqli_fetch_assoc($result4);
 
+//read messages
+$sql5 = "update tbl_message_replies set status=0 where messageid=$id";
+try {
+    mysqli_query($connection,$sql5);
+} catch (exception $e){
+    echo "error";
+}
+
 ?>
 
 <!doctype html>
@@ -49,7 +57,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
     <body class="body-bg">
         
         <!-- navbar -->
-        <nav class="navbar fixed-top" style="background-color: #FDD835;">
+        <nav class="navbar fixed-top" style="background-color: #69F0AE;">
             <div class="container-fluid">
                 <a class="navbar-brand">CHEDROXI-CAV</a>
                 
@@ -87,7 +95,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                     <?php } ?>
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" action="../../../modules/sendReply.php">
+                            <form method="post" action="../../../modules/client-sendReply.php">
                                 <div class="row">
                                     <div class="col-1">
                                         <h5>REPLY:</h5>
@@ -98,7 +106,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                                         <input type="text" class="form-control" name="reply">
                                     </div>
                                         <input type="submit" class="btn btn-outline-primary col-1" value="SEND">
-                                        <a href="viewMessages.php?id=<?=$id?>" class="btn btn-outline-danger col-1">BACK</a>
+                                        <a href="viewMessages.php?search=" class="btn btn-outline-danger col-1">BACK</a>
                                 </div>
                             </form>
                         </div>
