@@ -114,19 +114,54 @@ $result2 = mysqli_query($connection,$sql2);
                             
                                     </select>
                                 </div>
+
                                 <div class="mb-3">
                                     <label class="form-label">Date of Graduation</label>
-                                    <input type="text" class="form-control" name="dateofgraduation" required>
+                                    <input class="form-control" list="months" name="dateofgraduation" required>
+                                    <datalist id="months">
+                                        <option value="January ">
+                                        <option value="February ">
+                                        <option value="March ">
+                                        <option value="April ">
+                                        <option value="May ">
+                                        <option value="June ">
+                                        <option value="July ">
+                                        <option value="August ">
+                                        <option value="September ">
+                                        <option value="October ">
+                                        <option value="November ">
+                                        <option value="December ">
+                                    </datalist>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label">Date Started</label>
-                                    <input type="text" class="form-control" name="datestarted" required>
+                                    <input class="form-control" list="systart" name="datestarted" required>
+                                    <datalist id="systart">
+                                        <option value="1st Semester  19-19">
+                                        <option value="2nd Semester  19-19">
+                                        <option value="3rd Semester  19-19">
+                                        <option value="Summer  19-19">
+                                        <option value="1st Semester  20-20">
+                                        <option value="2nd Semester  20-20">
+                                        <option value="3rd Semester  20-20">
+                                        <option value="Summer  20-20">
+                                    </datalist>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label">Date Ended</label>
-                                    <input type="text" class="form-control" name="dateended" required>
+                                    <input class="form-control" list="syended" name="dateended" required>
+                                    <datalist id="syended">
+                                        <option value="1st Semester  19-19">
+                                        <option value="2nd Semester  19-19">
+                                        <option value="3rd Semester  19-19">
+                                        <option value="Summer  19-19">
+                                        <option value="1st Semester  20-20">
+                                        <option value="2nd Semester  20-20">
+                                        <option value="3rd Semester  20-20">
+                                        <option value="Summer  20-20">
+                                    </datalist>
                                 </div>
 
                             </div>
@@ -139,22 +174,22 @@ $result2 = mysqli_query($connection,$sql2);
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label class="form-label">Letter of Request</label>
-                                    <input class="form-control" type="file" name="requestletter" accept=".pdf,.jpg,.jpeg,.png" required>
+                                    <input class="form-control" type="file" name="requestletter" accept=".pdf" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label">Endorsement Letter</label>
-                                    <input class="form-control" type="file" name="indorsementletter" accept=".pdf,.jpg,.jpeg,.png" required>
+                                    <input class="form-control" type="file" name="indorsementletter" accept=".pdf" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label">Transcript of Record</label>
-                                    <input class="form-control" type="file" name="tor" accept=".pdf,.jpg,.jpeg,.png" required>
+                                    <input class="form-control" type="file" name="tor" accept=".pdf" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label">Diploma</label>
-                                    <input class="form-control" type="file" name="diploma" accept=".pdf,.jpg,.jpeg,.png" required>
+                                    <input class="form-control" type="file" name="diploma" accept=".pdf" required>
                                 </div>
                             </div>
                         </div>

@@ -45,7 +45,7 @@ $sql = "INSERT INTO tbl_process VALUES
 '$courseID',
 '$applicationType',
 '$mode',
-null,
+'$SOnumber',
 '$graduationDate',
 '$syStarted',
 '$syEnded',

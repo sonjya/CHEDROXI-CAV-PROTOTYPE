@@ -52,6 +52,7 @@ $fetch6 = mysqli_fetch_assoc($result6);
         <title>CHEDROXI-CAV</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" integrity="sha512-fXnjLwoVZ01NUqS/7G5kAnhXNXat6v7e3M9PhoMHOTARUMCaf5qNO84r5x9AFf5HDzm3rEZD8sb/n6dZ19SzFA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     </head>
 
     <body class="body-bg">
@@ -92,7 +93,13 @@ $fetch6 = mysqli_fetch_assoc($result6);
                         </div>
                     </div>
                     <hr>
-                    <div class="card text-bg-dark">
+                    <div class="card  text-bg-dark mb-2">
+                        <div class="card-header">CHART</div>
+                        <div class="card-body">
+                            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                        </div>
+                    </div>
+                    <div class="card text-bg-dark mb-2">
                         <div class="card-header">
                             APPLICATIONS
                         </div>
@@ -124,6 +131,23 @@ $fetch6 = mysqli_fetch_assoc($result6);
                                 <div class="col-4"></div>
                                     <a href="../../modules/admin-viewfiles-route.php?search=" class="col-4 mb-3 btn btn-outline-primary">VIEW</a>
                                 <div class="col-5"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card text-bg-dark">
+                        <div class="card-header">PAPER AVAILABILITY</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3"></div>
+                                <div class="col-4">
+                                    <h5>SECPA</h5>
+                                    <h1>10</h1>
+                                </div>
+                                <div class="col-4">
+                                    <h5>DFA</h5>
+                                    <h1>1</h1>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -184,6 +208,36 @@ $fetch6 = mysqli_fetch_assoc($result6);
             </div>
 
         </div>    
+
+
+
+
+        <script>
+            var xValues = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
+            var yValues = [10,13,42,6,11];
+
+            new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: xValues,
+                datasets: [{
+                fill: false,
+                lineTension: 0,
+                backgroundColor: "#FFFFFF",
+                borderColor: "#FFFFFF",
+                data: yValues
+                }]
+            },
+            options: {
+                legend: {display: false},
+                scales: {
+                yAxes: [{ticks: {min: 5, max:50}}],
+                }
+            }
+            });
+        </script>
+
+
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

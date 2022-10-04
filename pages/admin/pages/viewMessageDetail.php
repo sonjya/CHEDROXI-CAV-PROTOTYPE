@@ -98,7 +98,7 @@ $fetch4 = mysqli_fetch_assoc($result4);
                                         <input type="text" class="form-control" name="reply">
                                     </div>
                                         <input type="submit" class="btn btn-outline-primary col-1" value="SEND">
-                                        <a href="viewMessages.php?id=<?=$id?>" class="btn btn-outline-danger col-1">BACK</a>
+                                        <a href="viewMessages.php?search=" class="btn btn-outline-danger col-1">BACK</a>
                                 </div>
                             </form>
                         </div>

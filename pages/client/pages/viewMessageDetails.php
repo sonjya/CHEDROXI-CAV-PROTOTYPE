@@ -14,14 +14,7 @@ $fetch=mysqli_fetch_assoc($result);
 $user = $fetch['lastname'] . ', ' . $fetch['firstname'];
 $role = $fetch['roleDesc'];
 
-//viewed message na here
 $id = $_GET['id'];
-$sql1 = "update tbl_messages set active=0 where id='$id'";
-try {
-    mysqli_query($connection,$sql1);
-} catch(exception $e) {
-
-}
 
 //get school desc
 $sql2 = "select a.id,a.schoolid,schooldesc,message,a.date from tbl_messages a inner join tbl_schools b where a.schoolid=b.schoolid and a.id='$id' limit 1";

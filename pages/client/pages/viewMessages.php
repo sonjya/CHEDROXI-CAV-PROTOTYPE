@@ -61,6 +61,7 @@ $result1 = mysqli_query($connection,$sql1);
                             </div>
                             <div class="col">
                                 <input type="submit" class="btn btn-outline-primary" value="SEARCH">
+                                <a href="composeMessage.php" class="btn btn-outline-warning">COMPOSE</a>
                                 <a href="../index.php" class="btn btn-outline-danger">BACK</a>
                             </div>
                         </div>
