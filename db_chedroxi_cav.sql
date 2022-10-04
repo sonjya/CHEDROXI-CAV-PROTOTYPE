@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2022 at 05:23 PM
+-- Generation Time: Oct 04, 2022 at 08:19 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -138,35 +138,7 @@ CREATE TABLE `tbl_messages` (
 --
 
 INSERT INTO `tbl_messages` (`id`, `schoolid`, `message`, `date`, `active`) VALUES
-(1, 2, 'testing wan toh treh', '2022-10-02 07:08:08', 0),
-(2, 2, 'test', '2022-10-02 06:56:04', 1),
-(3, 2, 'test', '2022-10-02 06:56:04', 1),
-(4, 2, 'test', '2022-10-02 06:56:04', 1),
-(5, 2, 'test', '2022-10-02 06:56:04', 1),
-(6, 2, 'test', '2022-10-02 06:56:04', 1),
-(7, 2, 'test', '2022-10-02 06:56:04', 1),
-(8, 2, 'test', '2022-10-02 06:56:04', 1),
-(9, 2, 'test', '2022-10-02 06:56:04', 1),
-(10, 2, 'test', '2022-10-02 06:56:04', 1),
-(11, 2, 'test', '2022-10-02 06:56:04', 1),
-(12, 2, 'test', '2022-10-02 06:56:04', 1),
-(13, 2, 'test', '2022-10-02 06:56:04', 1),
-(14, 2, 'test', '2022-10-02 06:56:04', 1),
-(15, 2, 'test', '2022-10-02 06:56:04', 1),
-(16, 2, 'test', '2022-10-02 06:56:04', 1),
-(17, 3, 'test', '2022-10-02 06:56:04', 1),
-(18, 3, 'test', '2022-10-02 06:56:04', 1),
-(19, 3, 'test', '2022-10-02 06:56:04', 1),
-(20, 3, 'test', '2022-10-02 06:56:04', 1),
-(21, 3, 'test', '2022-10-02 06:56:04', 1),
-(22, 3, 'test', '2022-10-02 06:56:04', 1),
-(23, 3, 'test', '2022-10-02 06:56:04', 1),
-(24, 3, 'test', '2022-10-02 06:56:04', 1),
-(25, 3, 'test', '2022-10-02 06:56:04', 1),
-(26, 3, 'test', '2022-10-02 06:56:04', 1),
-(27, 3, 'test', '2022-10-02 06:56:04', 1),
-(28, 3, 'test', '2022-10-02 06:56:04', 1),
-(29, 2, 'sunday', '2022-10-03 14:47:38', 0);
+(31, 2, 'goodmorning maam/sir, ask lang nako unsa ang problem ngano na disapprove ni kay john mark?', '2022-10-04 06:18:17', 0);
 
 -- --------------------------------------------------------
 
@@ -188,12 +160,8 @@ CREATE TABLE `tbl_message_replies` (
 --
 
 INSERT INTO `tbl_message_replies` (`id`, `messageid`, `schoolid`, `reply`, `datetime`, `status`) VALUES
-(7, 1, 10, 'asdad', '2022-10-03 15:13:55', 0),
-(8, 1, 10, 'testing waters lezggo', '2022-10-03 15:13:55', 0),
-(9, 1, 10, 'mictest', '2022-10-03 15:13:55', 0),
-(10, 1, 2, 'yes po?', '2022-10-03 15:13:55', 0),
-(11, 1, 2, 'hello pooo', '2022-10-03 15:13:55', 0),
-(12, 1, 2, 'aahh okkii noted po', '2022-10-03 15:13:55', 0);
+(16, 31, 10, 'ang sa diploma maam is not match ang naa sa among records', '2022-10-04 06:16:44', 0),
+(17, 31, 2, 'i see, mag resend nlng ko maam', '2022-10-04 06:18:08', 0);
 
 -- --------------------------------------------------------
 
@@ -262,7 +230,9 @@ INSERT INTO `tbl_process` (`ID`, `schoolID`, `firstName`, `middleName`, `lastNam
 (80, 2, 'Kenneth', 'Mabz', 'Maboot', 1, 'Special Order', 'Conventional', NULL, 'October 2025', '2017-2018', '2024-2025', 'Local', 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x63686564726f78692e6a7067, '023121', 'BOOC, JAYSON JONES', 'DOROMAL, KENT', 2, 'Validated', '2022-09-25', '2022-09-25', 'DOROMAL, KENT', 'Yes'),
 (81, 2, 'Leslie', 'Corpuz', 'Liquit', 1, 'Special Order', 'Conventional', NULL, 'October 2022', '2017-2018', '2021-2022', 'Local', 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x4552442e706e67, NULL, NULL, NULL, NULL, 'Rejected', '2022-09-26', '2022-09-26', 'BOOC, JAYSON JONES', 'Yes'),
 (82, 2, 'Michelle', 'Mondejar', 'Cinco', 1, 'Special Order', 'Conventional', NULL, 'October 2022', '2017-2018', '2021-2022', 'Local', 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x63686564726f78692e6a7067, '00241112', 'BOOC, JAYSON JONES', NULL, 2, 'Processing', '2022-09-26', '2022-09-26', 'BOOC, JAYSON JONES', 'Yes'),
-(83, 2, 'Ariel', 'Diacosta', 'Abo-Abo', 1, 'Special Order', 'Conventional', NULL, 'October 2022', '2017-2018', '2021-2022', 'Local', 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x63686564726f78692e6a7067, NULL, NULL, NULL, NULL, 'Pending', '2022-09-26', '2022-09-26', NULL, 'Yes');
+(83, 2, 'Ariel', 'Diacosta', 'Abo-Abo', 1, 'Special Order', 'Conventional', NULL, 'October 2022', '2017-2018', '2021-2022', 'Local', 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x63686564726f78692e6a7067, NULL, NULL, NULL, NULL, 'Pending', '2022-09-26', '2022-09-26', NULL, 'Yes'),
+(84, 2, 'Jan Kenneth', 'Dospueblos', 'Macaraeg', 2, 'Special Order', 'Conventional', NULL, 'October 2022', '1st Semester  2017-2018', '2nd Semester  2021-2022', 'Local', 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, NULL, NULL, NULL, NULL, 'Pending', '2022-10-04', '2022-10-04', NULL, 'Yes'),
+(86, 2, 'Patrick Ryan', 'Makabali', 'Abrahama', 1, 'Special Order', 'Conventional', '19882-2414141424', 'October 2022', '1st Semester  2017-2018', '2nd Semester  2021-2022', 'Local', 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, NULL, NULL, NULL, NULL, 'Pending', '2022-10-04', '2022-10-04', NULL, 'Yes');
 
 -- --------------------------------------------------------
 
@@ -313,6 +283,19 @@ INSERT INTO `tbl_schools` (`schoolID`, `schoolDesc`, `schoolCity`, `active`) VAL
 (7, 'Holy Cross of Davao', 'Davao City', 'yes'),
 (8, 'Malayan Colleges University', 'Davao City', 'no'),
 (10, 'CHEDROXI', 'Davao City', 'yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_secpa`
+--
+
+CREATE TABLE `tbl_secpa` (
+  `ID` int(11) NOT NULL,
+  `secpaNumber` int(11) NOT NULL,
+  `dateuploaded` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `used` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -438,6 +421,12 @@ ALTER TABLE `tbl_schools`
   ADD PRIMARY KEY (`schoolID`);
 
 --
+-- Indexes for table `tbl_secpa`
+--
+ALTER TABLE `tbl_secpa`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
@@ -484,13 +473,13 @@ ALTER TABLE `tbl_courses`
 -- AUTO_INCREMENT for table `tbl_messages`
 --
 ALTER TABLE `tbl_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tbl_message_replies`
 --
 ALTER TABLE `tbl_message_replies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_prices`
@@ -502,7 +491,7 @@ ALTER TABLE `tbl_prices`
 -- AUTO_INCREMENT for table `tbl_process`
 --
 ALTER TABLE `tbl_process`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `tbl_roles`
@@ -515,6 +504,12 @@ ALTER TABLE `tbl_roles`
 --
 ALTER TABLE `tbl_schools`
   MODIFY `schoolID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `tbl_secpa`
+--
+ALTER TABLE `tbl_secpa`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
