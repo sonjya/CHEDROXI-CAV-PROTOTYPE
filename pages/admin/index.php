@@ -90,6 +90,7 @@ $fetch6 = mysqli_fetch_assoc($result6);
                             <h5><?=$role?></h5>
                             <a class="btn btn-outline-primary" href="pages/viewMessages.php?search="><span class="mdi mdi-inbox"></span> Inbox <span class="badge bg-primary"> <?=$fetch6['total']?> </span></a>
                             <a href="../../modules/admin-viewannouncements-route.php" class="btn btn-outline-primary"><span class="mdi mdi-bullhorn-variant-outline"></span> Announcement</a>
+                            <a href="../../modules/sendEmail.php" class="btn btn-outline-primary">EMAIL</a>
                         </div>
                     </div>
                     <hr>

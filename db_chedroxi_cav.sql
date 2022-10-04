@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2022 at 08:19 AM
+-- Generation Time: Oct 04, 2022 at 02:40 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -138,7 +138,7 @@ CREATE TABLE `tbl_messages` (
 --
 
 INSERT INTO `tbl_messages` (`id`, `schoolid`, `message`, `date`, `active`) VALUES
-(31, 2, 'goodmorning maam/sir, ask lang nako unsa ang problem ngano na disapprove ni kay john mark?', '2022-10-04 06:18:17', 0);
+(31, 2, 'goodmorning maam/sir, ask lang nako unsa ang problem ngano na disapprove ni kay john mark?', '2022-10-04 08:13:31', 0);
 
 -- --------------------------------------------------------
 
@@ -161,7 +161,10 @@ CREATE TABLE `tbl_message_replies` (
 
 INSERT INTO `tbl_message_replies` (`id`, `messageid`, `schoolid`, `reply`, `datetime`, `status`) VALUES
 (16, 31, 10, 'ang sa diploma maam is not match ang naa sa among records', '2022-10-04 06:16:44', 0),
-(17, 31, 2, 'i see, mag resend nlng ko maam', '2022-10-04 06:18:08', 0);
+(17, 31, 2, 'i see, mag resend nlng ko maam', '2022-10-04 06:18:08', 0),
+(18, 31, 2, 'hellooo', '2022-10-04 08:13:01', 0),
+(19, 31, 10, 'helloo puud', '2022-10-04 08:13:10', 0),
+(20, 31, 2, 'maam sir unsay ganap', '2022-10-04 08:13:26', 0);
 
 -- --------------------------------------------------------
 
@@ -230,8 +233,8 @@ INSERT INTO `tbl_process` (`ID`, `schoolID`, `firstName`, `middleName`, `lastNam
 (80, 2, 'Kenneth', 'Mabz', 'Maboot', 1, 'Special Order', 'Conventional', NULL, 'October 2025', '2017-2018', '2024-2025', 'Local', 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x63686564726f78692e6a7067, '023121', 'BOOC, JAYSON JONES', 'DOROMAL, KENT', 2, 'Validated', '2022-09-25', '2022-09-25', 'DOROMAL, KENT', 'Yes'),
 (81, 2, 'Leslie', 'Corpuz', 'Liquit', 1, 'Special Order', 'Conventional', NULL, 'October 2022', '2017-2018', '2021-2022', 'Local', 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x4552442e706e67, NULL, NULL, NULL, NULL, 'Rejected', '2022-09-26', '2022-09-26', 'BOOC, JAYSON JONES', 'Yes'),
 (82, 2, 'Michelle', 'Mondejar', 'Cinco', 1, 'Special Order', 'Conventional', NULL, 'October 2022', '2017-2018', '2021-2022', 'Local', 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x63686564726f78692e6a7067, '00241112', 'BOOC, JAYSON JONES', NULL, 2, 'Processing', '2022-09-26', '2022-09-26', 'BOOC, JAYSON JONES', 'Yes'),
-(83, 2, 'Ariel', 'Diacosta', 'Abo-Abo', 1, 'Special Order', 'Conventional', NULL, 'October 2022', '2017-2018', '2021-2022', 'Local', 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x63686564726f78692e6a7067, NULL, NULL, NULL, NULL, 'Pending', '2022-09-26', '2022-09-26', NULL, 'Yes'),
-(84, 2, 'Jan Kenneth', 'Dospueblos', 'Macaraeg', 2, 'Special Order', 'Conventional', NULL, 'October 2022', '1st Semester  2017-2018', '2nd Semester  2021-2022', 'Local', 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, NULL, NULL, NULL, NULL, 'Pending', '2022-10-04', '2022-10-04', NULL, 'Yes'),
+(83, 2, 'Ariel', 'Diacosta', 'Abo-Abo', 1, 'Special Order', 'Conventional', NULL, 'October 2022', '2017-2018', '2021-2022', 'Local', 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x53414d504c45205052494e542e706466, 0x63686564726f78692e6a7067, '66746181242', 'BOOC, JAYSON JONES', NULL, 2, 'Processing', '2022-09-26', '2022-10-04', 'BOOC, JAYSON JONES', 'Yes'),
+(84, 2, 'Jan Kenneth', 'Dospueblos', 'Macaraeg', 2, 'Special Order', 'Conventional', NULL, 'October 2022', '1st Semester  2017-2018', '2nd Semester  2021-2022', 'Local', 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, '231231', 'BOOC, JAYSON JONES', NULL, 2, 'Processing', '2022-10-04', '2022-10-04', 'BOOC, JAYSON JONES', 'Yes'),
 (86, 2, 'Patrick Ryan', 'Makabali', 'Abrahama', 1, 'Special Order', 'Conventional', '19882-2414141424', 'October 2022', '1st Semester  2017-2018', '2nd Semester  2021-2022', 'Local', 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, 0x43562d4a6179736f6e204a6f6e65732e706466, NULL, NULL, NULL, NULL, 'Pending', '2022-10-04', '2022-10-04', NULL, 'Yes');
 
 -- --------------------------------------------------------
@@ -309,6 +312,7 @@ CREATE TABLE `tbl_users` (
   `firstname` varchar(50) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
+  `emailAddress` varchar(50) NOT NULL,
   `roleID` int(11) NOT NULL,
   `picture` blob DEFAULT NULL,
   `active` varchar(3) NOT NULL
@@ -318,14 +322,14 @@ CREATE TABLE `tbl_users` (
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`userID`, `lastname`, `firstname`, `username`, `password`, `roleID`, `picture`, `active`) VALUES
-(1, 'BOOC', 'JAYSON JONES', 'soya', '1231', 1, '', 'yes'),
-(2, 'VECINA', 'JAMES ANTHONY', 'james', '1231', 4, '', 'yes'),
-(3, 'ABO-ABO', 'ARIEL', 'yel', '1231', 4, '', 'yes'),
-(4, 'LIQUIT', 'LESLIE', 'les', '1231', 4, '', 'yes'),
-(5, 'ONE', 'PAMELA', 'pam', '1231', 5, '', 'yes'),
-(9, 'PROCESSOR', 'ONE', 'pro', '1231', 2, '', 'yes'),
-(12, 'DOROMAL', 'KENT', 'kent', '1231', 2, NULL, 'yes');
+INSERT INTO `tbl_users` (`userID`, `lastname`, `firstname`, `username`, `password`, `emailAddress`, `roleID`, `picture`, `active`) VALUES
+(1, 'BOOC', 'JAYSON JONES', 'soya', '1231', 'jaysonjonesbooc.jjb@gmail.com', 1, '', 'yes'),
+(2, 'VECINA', 'JAMES ANTHONY', 'james', '1231', 'rainbowchicken73@gmail.com', 4, '', 'yes'),
+(3, 'ABO-ABO', 'ARIEL', 'yel', '1231', '', 4, '', 'yes'),
+(4, 'LIQUIT', 'LESLIE', 'les', '1231', '', 4, '', 'yes'),
+(5, 'ONE', 'PAMELA', 'pam', '1231', '', 5, '', 'yes'),
+(9, 'PROCESSOR', 'ONE', 'pro', '1231', '', 2, '', 'yes'),
+(12, 'DOROMAL', 'KENT', 'kent', '1231', '', 2, NULL, 'yes');
 
 -- --------------------------------------------------------
 
@@ -479,7 +483,7 @@ ALTER TABLE `tbl_messages`
 -- AUTO_INCREMENT for table `tbl_message_replies`
 --
 ALTER TABLE `tbl_message_replies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_prices`
