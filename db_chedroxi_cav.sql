@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2022 at 02:40 PM
+-- Generation Time: Oct 08, 2022 at 10:23 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -39,7 +39,7 @@ CREATE TABLE `tbl_announcements` (
 --
 
 INSERT INTO `tbl_announcements` (`ID`, `description`, `date`, `active`) VALUES
-(8, 'This is to inform you that starting March 2023 we will be using this CAV System. Please inform your school head administration.', '2022-09-25', 'yes'),
+(8, 'This is to inform you that starting March 2023 we will be using this CAV System. Please inform your school head administration.', '2022-09-25', 'no'),
 (9, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Vivamus at augue eget arcu dictum varius. Vitae suscipit tellus mauris a diam. Turpis massa sed elementum tempus egestas sed sed. Magna fermentum iaculis eu non. Tristique nulla aliquet enim tortor at auctor urna nunc id. Vitae congue mauris rhoncus aenean vel elit. Amet cons', '2022-09-25', 'yes');
 
 -- --------------------------------------------------------
@@ -67,7 +67,8 @@ INSERT INTO `tbl_announcement_replies` (`id`, `schoolid`, `announcementid`, `rep
 (10, 1, 9, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Vivamus at augue eget arcu dictum varius. Vitae suscipit tellus mauris a diam. Turpis massa sed elementum tempus egestas sed sed. Magna fermentum iaculis eu non. Tristique nulla aliquet enim tortor at auctor urna nunc id. Vitae congue mauris rhoncus aenean vel elit. Amet cons', '2022-09-27'),
 (11, 1, 8, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non curabitur gravida arcu ac. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Vivamus at augue eget arcu dictum varius. Vitae suscipit tellus mauris a diam. Turpis massa sed elementum tempus egestas sed sed. Magna fermentum iaculis eu non. Tristique nulla aliquet enim tortor at auctor urna nunc id. Vitae congue mauris rhoncus aenean vel elit. Amet cons', '2022-09-27'),
 (12, 1, 8, 'okiie', '2022-09-27'),
-(13, 2, 9, 'hala oyy nag-ulaaann,', '2022-09-28');
+(13, 2, 9, 'hala oyy nag-ulaaann,', '2022-09-28'),
+(14, 2, 8, 'gege', '2022-10-05');
 
 -- --------------------------------------------------------
 
@@ -459,7 +460,7 @@ ALTER TABLE `tbl_announcements`
 -- AUTO_INCREMENT for table `tbl_announcement_replies`
 --
 ALTER TABLE `tbl_announcement_replies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_commissioners`
